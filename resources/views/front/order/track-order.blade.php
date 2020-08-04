@@ -1,5 +1,9 @@
 @extends('front.master')
 
+@section('title')
+    HalalGhor - Track Order
+@endsection
+
 @section('body')
     <section class="thank-you pt-5 pb-5">
         <div class="container">
@@ -32,16 +36,12 @@
                                     <th>{{ $order->name }}</th>
                                 </tr>
                                 <tr>
-                                    <th>Phone</th>
-                                    <th>{{ $order->phone }}</th>
-                                </tr>
-                                <tr>
                                     <th>Order Id</th>
-                                    <th>{{ $order->id }}</th>
+                                    <th>{{ '1000'.$order->id }}</th>
                                 </tr>
                                 <tr>
                                     <th>Order Status</th>
-                                    <th>{{ $order->status }}</th>
+                                    <th>{{ $order->order_status }}</th>
                                 </tr>
                             </thead>
                         </table>

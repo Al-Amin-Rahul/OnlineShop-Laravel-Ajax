@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Shipping;
 use App\User;
+use App\CustomerFeedback;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -72,7 +75,17 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "status" => "required"
+        ]);
+
+        $shipping = Shipping::find($id);
+
+        $shipping->update([
+            "status" => $request->status
+        ]);
+
+        return redirect()->route("admin.order.index");
     }
 
     /**
@@ -86,7 +99,21 @@ class DashboardController extends Controller
         //
     }
 
-    public function setFlashSaleTime(){
-        return view('admin.accessibility.set-timer');
+    public function showPerfumeField($val){
+        $class = "d-block";
+        if($val == 7)
+        {
+            return response()->json($class);
+        }
+        else
+        {
+            return response()->json('remove');
+        }
+    }
+
+    public function customerFeedback()
+    {
+        $data['feedbacks']  =   CustomerFeedback::all();
+        return view('admin.feedback.view-feedback', $data);
     }
 }

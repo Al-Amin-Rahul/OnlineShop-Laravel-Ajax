@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facedes\File;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Comment;
+
 
 class Product extends Model
 {
@@ -22,9 +24,13 @@ class Product extends Model
 
             $image->move($directory, $name);
 
+            function make_slug($string)
+            {
+                return preg_replace('/\s+/u', '-', trim($string));
+            }
 
             $product->name                      =  $request->name;
-            $product->slug                      =  Str::slug($request->name);
+            $product->slug                      =  make_slug($request->name);
             $product->category_id               =  $request->category_id;
             $product->code                      =  $request->code;
             $product->stock                     =  $request->stock;
@@ -38,7 +44,13 @@ class Product extends Model
             $product->occational_offer_ratio    =  $request->occational_offer_ratio;
             $product->daily_offer               =  $request->daily_offer;
             $product->daily_offer_ratio         =  $request->daily_offer_ratio;
+            $product->mela                      =  $request->mela;
+            $product->mela_offer_ratio          =  $request->mela_offer_ratio;
             $product->publication_status        =  $request->publication_status;
+            $product->price_3                   =  $request->price_3;
+            $product->price_6                   =  $request->price_6;
+            $product->price_12                  =  $request->price_12;
+            $product->price_25                  =  $request->price_25;
             $product->image                     =  $imageUrl;
 
             $product->save();
@@ -49,6 +61,11 @@ class Product extends Model
 
     function updateProduct($request, $id)
     {
+        function make_slug($string)
+        {
+            return preg_replace('/\s+/u', '-', trim($string));
+        }
+
         $product    =   Product::find($id);
 
         if($request->hasFile('image'))
@@ -68,7 +85,7 @@ class Product extends Model
         }
 
             $product->name                      =  $request->name;
-            $product->slug                      =  Str::slug($request->name);
+            $product->slug                      =  make_slug($request->name);
             $product->category_id               =  $request->category_id;
             $product->code                      =  $request->code;
             $product->stock                     =  $request->stock;
@@ -81,6 +98,12 @@ class Product extends Model
             $product->occational_offer          =  $request->occational_offer;
             $product->occational_offer_ratio    =  $request->occational_offer_ratio;
             $product->daily_offer               =  $request->daily_offer;
+            $product->mela                      =  $request->mela;
+            $product->mela_offer_ratio          =  $request->mela_offer_ratio;
+            $product->price_3                   =  $request->price_3;
+            $product->price_6                   =  $request->price_6;
+            $product->price_12                  =  $request->price_12;
+            $product->price_25                  =  $request->price_25;
             $product->daily_offer_ratio         =  $request->daily_offer_ratio;
             $product->publication_status        =  $request->publication_status;
             $product->image                     =  $imageUrl;
@@ -93,5 +116,9 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'product_id', 'id');
     }
 }

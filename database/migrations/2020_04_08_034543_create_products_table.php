@@ -21,6 +21,10 @@ class CreateProductsTable extends Migration
             $table->string('code',20)->unique();
             $table->integer('stock');
             $table->decimal('price',10, 2);
+            $table->decimal('price_3',10, 2)->default(0);
+            $table->decimal('price_6',10, 2)->default(0);
+            $table->decimal('price_12',10, 2)->default(0);
+            $table->decimal('price_25',10, 2)->default(0);
             $table->text('description');
             $table->text('product_feature');
             $table->tinyInteger('top_sale');
@@ -30,6 +34,8 @@ class CreateProductsTable extends Migration
             $table->integer('occational_offer_ratio')->default(0);
             $table->tinyInteger('daily_offer');
             $table->integer('daily_offer_ratio')->default(0);
+            $table->tinyInteger('mela');
+            $table->integer('mela_offer_ratio')->default(0);
             $table->tinyInteger('publication_status')->default(1);
             $table->string('image');
             $table->timestamps();

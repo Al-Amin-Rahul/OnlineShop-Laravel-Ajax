@@ -45,11 +45,6 @@
                             <td>{{ $shipping->id }}</td>
                         </tr>
                         <tr>
-                            <th>Delivery Charge</th>
-                            <td>{{ $shipping->delivery }} Tk</td>
-                        </tr>
-
-                        <tr>
                             <th>Date & Time</th>
                             <td>{{ $shipping->created_at }}</td>
                         </tr>
@@ -74,6 +69,8 @@
                             <th>Name</th>
                             <th>Unit price (BDT)</th>
                             <th>Quantity</th>
+                            <th>Weight</th>
+                            <th>Gift Wrap</th>
                             <th>Price (BDT)</th>
                         </tr>
                         </thead>
@@ -86,17 +83,34 @@
                             <td>{{ $orderDetail->product_name }}</td>
                             <td>{{ $price = $orderDetail->product_price }}</td>
                             <td>{{ $qty = $orderDetail->product_qty }}</td>
+                            <td>{{ $weight = $orderDetail->product_weight }}</td>
+                            @if($orderDetail->product_wrap == 1)
+                                <td>Gift Wrap</td>
+                            @else
+                                <td>No</td>
+                            @endif
                             <td>{{ $total = $price * $qty }}
                             {{Session::put('totalPrice', $orderDetail->order_total)}}
                             </td>
                         </tr>
                         @endforeach
                         <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Delivery Charge</th>
+                        <th>{{ $shipping->delivery }} Tk</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
                             <th>Total (BDT)</th>
-                            <th>TK. {{Session::get('totalPrice')}}</th>
+                            <th>TK. {{$grandTotal   =   $shipping->delivery + Session::get('totalPrice')}}</th>
                         </tr>
                         </tbody>
                     </table>

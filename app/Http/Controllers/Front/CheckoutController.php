@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 use App\Shipping;
 use App\OrderDetail;
+use App\Coupon;
+use App\UsedCoupon;
 use Cart;
 use Session;
 class CheckoutController extends Controller
@@ -29,7 +32,7 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        return "sy";
+        
     }
 
     /**
@@ -43,25 +46,40 @@ class CheckoutController extends Controller
         $validator = Validator::make($request->all(), [
             'name'     =>   'required|max:50',
             'phone'    =>   'required|max:20',
-            'address'  =>   'required'
+            'address'  =>   'required',
+            'delivery' =>   'required',
+            'payment'  =>   'required',
         ]);
         if($validator->fails())
         {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        else
+        {
+            //coupon
+            if($request->coupon_id != 0)
+            {
+                $usedAdd    =   UsedCoupon::insert([
+                    'coupon_id' =>   $request->coupon_id,
+                    'user_id'   =>   $request->user_id
+                ]);
+            }
+
+            //sippin
             $shipping = new Shipping();  
             $shipping->insertShipping($shipping, $request);
 
+            //orderDeails
             $cartItems     =   Cart::content();
             $orderDetail   =   new OrderDetail();
-            $orderDetail->insertOrderDetail($cartItems, $shipping);
+            $orderDetail->insertOrderDetail($cartItems, $shipping, $request);
             Cart::destroy();
 
-            Session::put('customer_name', $request->name);
             Session::put('phone', $request->phone);
-            Session::put('order_id', "#000".$shipping->id);
+            Session::put('order_id', '1000'.$shipping->id);
 
             return redirect()->route("order-confirmation");
+        }
 
 
     }
@@ -74,7 +92,7 @@ class CheckoutController extends Controller
      */
     public function show()
     {
-        return "show";   
+        
     }
 
     /**
@@ -109,6 +127,50 @@ class CheckoutController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function applyCoupon(Request $request)
+    {
+        $date   =   new Carbon;
+        $code   =   $request->code;
+        $check  =   Coupon::where("coupon_code", $request->code)->where("expire_date", ">", $date)->get();
+        if(count($check) == "1")
+        {
+            $userId     =   Session::get('customer_id');
+            $checkUsed  =   UsedCoupon::where('user_id', $userId)->where('coupon_id',$check[0]->id)->count();
+            
+            if($checkUsed=="0")
+            {
+                $dis        =   $check[0]->discount;
+                $newTotal   =   Cart::priceTotal() - ( Cart::priceTotal() * $check[0]->discount / 100 );
+                
+                return ([
+                    'alert'      =>  'Applied',
+                    'code'       =>  $code,
+                    'dis'        =>  $check[0]->discount,  
+                    'newTotal'   =>  $newTotal,  
+                    'coupon_id'  =>  $check[0]->id,
+                    'user_id'    =>  $userId
+                ]);
+            }
+            else
+            {
+                return([
+                    'dis'        =>  0,  
+                    'newTotal'   =>  Cart::pricetotal(),  
+                    'alert'     =>  "You Already Used This Coupon"
+                ]);
+            }
+
+        }
+        else
+        {
+            return([
+                'dis'        =>  0,  
+                'newTotal'   =>  Cart::pricetotal(),  
+                'alert'     =>  "Sorry The Coupon Is Not Valid"
+            ]);
+        }
     }
 }
 

@@ -1,5 +1,9 @@
 @extends('front.master')
 
+@section('title')
+    HalalGhor - Thank You
+@endsection
+
 @section('body')
     <section class="thank-you pt-5 pb-5">
         <div class="container">

@@ -1,5 +1,9 @@
 @extends('front.master')
 
+@section('title')
+    HalalGhor - All Categories
+@endsection
+
 @section('body')
     <section class="all-categories pt-5">
         <div class="container">
@@ -9,7 +13,7 @@
             <div class="row">
                 @foreach($categories as $category)
                     <div class="col-lg-3 pb-4">
-                        <a href="{{route("product-category", ['id'  =>  $category->id])}}" class="shadow rounded card bt-blue text-decoration-none">
+                        <a href="{{route("product-category", ['slug'  =>  $category->slug])}}" class="shadow rounded card bt-blue text-decoration-none">
                             <div class="cat-img">
                                 <img src="{{asset($category->category_image)}}" width="100%" alt="">
                             </div>

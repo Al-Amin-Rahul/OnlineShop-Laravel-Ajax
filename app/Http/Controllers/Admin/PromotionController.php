@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\DailyOffer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PromotionController extends Controller
 {
@@ -14,7 +16,8 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        //
+        $data['dailyOffer'] =   DailyOffer::find(1);
+        return view('admin.promotion.manage-promotion', $data);
     }
 
     /**
@@ -35,7 +38,20 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+
+            'promotion_title'                        =>   "required",
+            'publication_status'                     =>   'required'
+        ]);
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $dailyOffer =   new DailyOffer();
+        $dailyOffer->promotion_title    =   $request->promotion_title;
+        $dailyOffer->publication_status    =   $request->publication_status;
+        $dailyOffer->save();
+        return redirect()->back()->with('message', 'Added Successfully !');
     }
 
     /**
@@ -57,7 +73,8 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['dailyOffer'] =   DailyOffer::find($id);
+        return view('admin.promotion.edit-promotion', $data);
     }
 
     /**
@@ -69,7 +86,14 @@ class PromotionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dailyOffer = DailyOffer::find($id);
+
+        $dailyOffer->update([
+            "promotion_title" => $request->promotion_title,
+            "publication_status" => $request->publication_status,
+        ]);
+
+        return redirect()->route("admin.promotion.index");
     }
 
     /**

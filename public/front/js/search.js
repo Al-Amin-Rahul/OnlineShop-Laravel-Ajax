@@ -1,12 +1,4 @@
 $(function(){
-    // $('#searchField').tokenfield({
-    //     autocomplete: {
-    //         source: "http://127.0.0.1:8000/productList",
-    //         delay: 100
-    //     },
-    //     showAutocompleteOnFocus: true
-    // });
-
     $(document).on("submit", "#searchProduct", function(event){
         event.preventDefault();
         let url = $(this).attr("action");

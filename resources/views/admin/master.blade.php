@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Rahul - Dashboard</title>
+  <title>@yield('title')</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset("/") }}admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,6 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset("/") }}admin/css/sb-admin-2.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset("/") }}admin/ckeditor/samples/css/samples.css">
+  <link rel="stylesheet" href="{{ asset("/") }}admin/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css">
 
 </head>
 
@@ -68,6 +70,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{ asset("/") }}admin/js/sb-admin-2.min.js"></script>
+  <script src="{{ asset("/") }}admin/js/perfume.js"></script>
 
   <!-- Page level plugins -->
   <script src="{{ asset("/") }}admin/vendor/chart.js/Chart.min.js"></script>
@@ -75,6 +78,13 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset("/") }}admin/js/demo/chart-area-demo.js"></script>
   <script src="{{ asset("/") }}admin/js/demo/chart-pie-demo.js"></script>
+  
+  <!-- ckeditor -->
+  <script src="{{ asset("/") }}admin/ckeditor/ckeditor.js"></script>
+  <script src="{{ asset("/") }}admin/ckeditor/samples/js/sample.js"></script>
+  <script>
+        initSample();
+  </script>
 
 </body>
 

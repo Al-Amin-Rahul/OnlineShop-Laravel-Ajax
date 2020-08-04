@@ -47,6 +47,22 @@ $(document).on("submit", "#removeForm", function(arg){
     arg.preventDefault();
 });
 
+$(document).on("submit", "#updateCart", function(e){
+    let url = $(this).attr("action");
+    let method = $(this).attr("method");
+    let data = $(this).serialize();
+
+    $.ajax({
+        url: url,
+        method: method,
+        data: data,
+        success: data => {
+            return getCartItems();
+        }
+    });
+    e.preventDefault();
+});
+
 function getCartItems()
 {
     let url =   $('#cartShow').data('url');

@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         if (Schema::hasTable("categories")) {
-            $categories = Category::where('publication_status',1)->get();
+            $categories = Category::where('publication_status',1)->orderBy("id", "desc")->get();
             View::share('categories',$categories);
         }
     }

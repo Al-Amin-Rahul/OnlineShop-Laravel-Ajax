@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Ecommerce Rahul'),
+    'name' => env('APP_NAME', 'HalalGhor'),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', "base64:HnbiWPuWnA9mILbUZdHAbDb+KH8fhDZGsIpT6RCUNF0="),
 
     'cipher' => 'AES-256-CBC',
 

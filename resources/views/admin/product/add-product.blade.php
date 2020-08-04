@@ -39,6 +39,37 @@
                             </select>
                         </div>
                     </div>
+                    <!-- perfume -->
+                    <div class="perfume-input-box bg-dark text-white mb-3 p-3" id="pbox">
+                        <div class="alert alert-danger">
+                            Perfume Price
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-sm-3">Price 3.5ml:</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="price_3" value="0" id="price3">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-sm-3">Price 6ml:</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="price_6" value="0" id="price6">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-sm-3">Price 12ml:</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="price_12" value="0" id="price8">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="control-label col-sm-3">Price 25ml:</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="price_25" value="0" id="price10">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- perfume -->
 
                     <div class="form-group row">
                         <label class="control-label col-sm-3" for="code">Product Code:</label>
@@ -145,6 +176,24 @@
                         </div>
                     </div>
                     <hr class=""/>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="mela">Mela</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="mela" value="1" >Yes
+                            </label>
+
+                            <label class="radio-inline pl-3">
+                                <input type="radio" name="mela" value="0" checked>No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="mela_offer_ratio">Mela Offer Ratio:</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" name="mela_offer_ratio" value="0" id="mela_offer_ratio">
+                        </div>
+                    </div>
 
                     <div class="form-group row">
                         <label class="control-label col-sm-3" for="publication_status">Publication Status</label>

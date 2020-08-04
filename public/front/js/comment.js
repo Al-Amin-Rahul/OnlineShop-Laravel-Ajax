@@ -4,17 +4,16 @@ $(function(){
         let url     =   $(this).attr('action');
         let method  =   $(this).attr('method');
         let data    =   $(this).serialize();
-
+        
         $.ajax({
             url: url,
             method: method,
             data: data,
             type: "JSON",
-            success:data =>{
-                console.log(data)
+            success: data =>{
+                return getComments();
             }
-        })
-        return getComments();
+        });
     })
 });
 

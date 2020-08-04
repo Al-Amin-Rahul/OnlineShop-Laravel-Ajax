@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $fillable =   [
+        'reply'
+    ];
     public function insertComment($request)
     {
         $comment    =   new Comment();

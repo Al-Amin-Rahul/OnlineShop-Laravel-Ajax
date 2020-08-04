@@ -1,7 +1,7 @@
 @extends('front.master')
 
 @section('title')
-    404 - Not Found
+    HalalGhor - 404 Not Found
 @endsection
 @section('body')
 <style>

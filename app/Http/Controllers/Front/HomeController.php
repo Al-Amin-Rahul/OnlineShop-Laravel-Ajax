@@ -8,6 +8,10 @@ use App\Slider;
 use App\Shipping;
 use App\Product;
 use App\Comment;
+use App\Mela;
+use App\DailyOffer;
+use App\OccationalOffer;
+use App\Feedback;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,12 +34,19 @@ class HomeController extends Controller
     public function index()
     {
         $data['sliders']                     =   Slider::where('publication_status',1)->where('location', 'home')->get();
-        $data['top_categories']              =   Category::where('publication_status', 1)->take(3)->get();
-        $data['category_products']           =   Category::with('products')->where('publication_status', 1)->get();
-        $data['top_sales']                   =   Product::where('top_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->take(6)->get();
-        $data['flash_sales']                 =   Product::where('flash_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->take(12)->get();
-        $data['occational_offer_products']   =   Product::with('category')->where('occational_offer', 1)->get();
+        $data['top_categories']              =   Category::where('publication_status', 1)->orderBy("id", "desc")->take(3)->get();
+        $data['category_products']           =   Category::with('products')->where('publication_status', 1)->orderBy('id', 'desc')->get();
+        $data['top_sales']                   =   Product::with('comments')->where('top_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->take(6)->get();
+        $data['flash_sales']                 =   Product::with('comments')->where('flash_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->take(12)->get();
+        $data['occational_offer_title']      =   OccationalOffer::where('publication_status', 1)->first();
+        $data['occational_offer_products']   =   Product::with('comments')->where('occational_offer', 1)->orderBy("id", "desc")->get();
+        $data['feedbacks']                   =   Feedback::orderBy("id", "desc")->get();
+        $data['daily_offer_title']           =   DailyOffer::where('publication_status', 1)->first();
+        $data['mela']                        =   Mela::where('publication_status', 1)->first();
 
+        // $data['p']  =   Product::with('comments', 'category')->where('publication_status', 1)->get();
+        //  return $categories;
+        // return $data['daily_offer_products'];
         // $search =   "7,9";
         // $separate   = explode(',', $search );
         // return $separate;
@@ -43,18 +54,18 @@ class HomeController extends Controller
         // return $get ;
         return view('front.home.home', $data);
     }
-    public function productDetails($id)
+    public function productDetails($slug)
     {
-        $data['product']            =   Product::find($id);
+        $data['product']            =   Product::all()->where("slug", $slug)->first();
         $data['similar_products']   =   Category::with('products')->where('publication_status', 1)->where('id', $data['product']->category_id)->get();
-        $data['comments']           =   Comment::where('product_id', $id)->orderBy("id", "desc")->take(5)->get();
-        $data['length']             =   count(Comment::where('product_id', $id)->orderBy("id", "desc")->get());
+        $data['comments']           =   Comment::where('product_id', $data['product']->id)->orderBy("id", "desc")->take(5)->get();
+        $data['length']             =   count(Comment::where('product_id', $data['product']->id)->orderBy("id", "desc")->get());
         return view('front.product.product-details', $data);
     }
-    public function productCategory($id)
+    public function productCategory($slug)
     {
         $data['sliders'] = Slider::where('publication_status',1)->where('location', 'category')->get();
-        $data['category_products']   =   Category::with('products')->where('publication_status', 1)->where('id', $id)->get();
+        $data['category_products']   =   Category::with('products')->where('publication_status', 1)->where('slug', $slug)->get();
         return view('front.product.product-category', $data);
     }
     public function showAllCategories()
@@ -70,12 +81,144 @@ class HomeController extends Controller
 
     public function showOrder(Request $request)
     {
-        $data['order']  =   Shipping::find($request->order_id);
+        $sub   =   substr($request->order_id, '3');
+        $data['order']  =   Shipping::find($sub);
         return view('front.order.track-order', $data);
     }
 
     public function showuserLoginForm()
     {
         return view('front.login.login');
+    }
+    public function showusersignUpForm()
+    {
+        return view('front.login.sign-up');
+    }
+    public function flashSale()
+    {
+        $data['sliders']        =   Slider::where('publication_status',1)->where('location', 'category')->get();
+        $data['flash_sales']    =   Product::where('flash_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->get();
+        return view('front.flash-sale.flash-sale', $data);
+    }
+    public function topSale()
+    {
+        $data['sliders']        =   Slider::where('publication_status',1)->where('location', 'category')->get();
+        $data['top_sales']      =   Product::where('top_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->get();
+        return view('front.top-sale.top-sale', $data);
+    }
+    public function todaysOffer()
+    {
+        $data['daily_offer_products']        =   Product::where('daily_offer', 1)->get();
+        $data['sliders']                     =   Slider::where('publication_status',1)->where('location', 'category')->get();
+        return view('front.daily-offer.daily-offer', $data);
+    }
+    public function mela()
+    {
+        $data['melar_products']              =   Product::where('mela', 1)->get();
+        $data['sliders']                     =   Slider::where('publication_status',1)->where('location', 'category')->get();
+        return view('front.mela.mela', $data);
+    }
+    public function occationalOffer()
+    {
+        $data['occational_offer_title']           =   OccationalOffer::where('publication_status', 1)->find(1);
+        $data['occational_offer_products']        =   Product::where('occational_offer', 1)->get();
+        $data['sliders']                          =   Slider::where('publication_status',1)->where('location', 'category')->get();
+        return view('front.occation.occational-offer', $data);
+    }
+
+    public function showPerfumePrice($id, $val)
+    {
+
+        $price      =   Product::select($val)->where('id', $id)->first();
+        $product    =   Product::find($id);
+        if($product->category_id == 7 && $product->flash_sale == 1){
+            if($val == 'price_3')
+            {
+                $price  =   number_format(($product->price_3 - (($product->price_3 * $product->flash_sale_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_6')
+            {
+                $price  =   number_format(($product->price_6 - (($product->price_6 * $product->flash_sale_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_12')
+            {
+                $price  =   number_format(($product->price_12 - (($product->price_12 * $product->flash_sale_ratio) / 100)), 2);
+            }
+            else {
+                $price  =   number_format(($product->price_25 - (($product->price_25 * $product->flash_sale_ratio) / 100)), 2);
+            }
+        }
+        elseif ($product->category_id == 7 && $product->daily_offer == 1) {
+            if($val == 'price_3')
+            {
+                $price  =   number_format(($product->price_3 - (($product->price_3 * $product->daily_offer_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_6')
+            {
+                $price  =   number_format(($product->price_6 - (($product->price_6 * $product->daily_offer_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_12')
+            {
+                $price  =   number_format(($product->price_12 - (($product->price_12 * $product->daily_offer_ratio) / 100)), 2);
+            }
+            else {
+                $price  =   number_format(($product->price_25 - (($product->price_25 * $product->daily_offer_ratio) / 100)), 2);
+            }
+        }
+        elseif ($product->category_id == 7 && $product->occational_offer == 1) {
+            if($val == 'price_3')
+            {
+                $price  =   number_format(($product->price_3 - (($product->price_3 * $product->occational_offer_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_6')
+            {
+                $price  =   number_format(($product->price_6 - (($product->price_6 * $product->occational_offer_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_12')
+            {
+                $price  =   number_format(($product->price_12 - (($product->price_12 * $product->occational_offer_ratio) / 100)), 2);
+            }
+            else {
+                $price  =   number_format(($product->price_25 - (($product->price_25 * $product->occational_offer_ratio) / 100)), 2);
+            }
+        }
+        elseif ($product->category_id == 7 && $product->mela == 1) {
+            if($val == 'price_3')
+            {
+                $price  =   number_format(($product->price_3 - (($product->price_3 * $product->mela_offer_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_6')
+            {
+                $price  =   number_format(($product->price_6 - (($product->price_6 * $product->mela_offer_ratio) / 100)), 2);
+            }
+            elseif($val == 'price_12')
+            {
+                $price  =   number_format(($product->price_12 - (($product->price_12 * $product->mela_offer_ratio) / 100)), 2);
+            }
+            else {
+                $price  =   number_format(($product->price_25 - (($product->price_25 * $product->mela_offer_ratio) / 100)), 2);
+            }
+        }
+        elseif ($product->category_id == 7) {
+            if($val == 'price_3')
+            {
+                $price  =   $product->price_3;
+            }
+            elseif($val == 'price_6')
+            {
+                $price  =   $product->price_6;
+            }
+            elseif($val == 'price_12')
+            {
+                $price  =   $product->price_12;
+            }
+            else {
+                $price  =   $product->price_25;
+            }
+        }
+        else{
+            $price  =   0;
+        }
+        return response()->json((Int)$price);
     }
 }

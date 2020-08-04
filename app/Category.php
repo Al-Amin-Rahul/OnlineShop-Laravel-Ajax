@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
@@ -11,7 +10,7 @@ class Category extends Model
 {
     public function insertCategory($request){
 
-        $category = new Category;
+        $category = new Category();
 
         if ($request->hasFile("category_image"))
         {

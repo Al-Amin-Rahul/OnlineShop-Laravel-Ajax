@@ -1,5 +1,8 @@
 @extends('admin.master')
 
+@section('title')
+    HalalGhor - Dashboard
+@endsection
 @section('body')
 <div class="container-fluid">
         <!-- Page Heading -->

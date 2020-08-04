@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\Shipping;
 use App\OrderDetail;
 use App\Product;
@@ -66,7 +67,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -78,7 +79,18 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "order_status" => "required"
+        ]);
+
+        $shipping = Shipping::find($id);
+
+        $shipping->update([
+            "order_status" => $request->order_status
+
+        ]);
+
+        return redirect()->route("admin.order.index");
     }
 
     /**
@@ -89,6 +101,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shipping    =   Shipping::find($id);
+        $shipping->delete($id);
+        return redirect()->back()->with('message', 'Deleted Successfully !');
     }
 }

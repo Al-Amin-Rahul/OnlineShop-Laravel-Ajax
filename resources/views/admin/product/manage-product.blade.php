@@ -26,11 +26,13 @@
               <th>No</th>
               <th>Name</th>
               <th>Category</th>
-              <th>Slug</th>
               <th>Code</th>
+              <th>Stock</th>
               <th>Price</th>
-              <th>Description</th>
-              <th>Features</th>
+              <th>3.5</th>
+              <th>6</th>
+              <th>12</th>
+              <th>25</th>
               <th>Top Sale</th>
               <th>Flash Sale</th>
               <th>Flash Sale Ratio</th>
@@ -48,11 +50,13 @@
               <th>No</th>
               <th>Name</th>
               <th>Category</th>
-              <th>Slug</th>
               <th>Code</th>
+              <th>Stock</th>
               <th>Price</th>
-              <th>Description</th>
-              <th>Features</th>
+              <th>3.5</th>
+              <th>6</th>
+              <th>12</th>
+              <th>25</th>
               <th>Top Sale</th>
               <th>Flash Sale</th>
               <th>Flash Sale Ratio</th>
@@ -72,11 +76,13 @@
               <td>{{ $i++ }}</td>
               <td>{{ $product->name }}</td>
               <td>{{ $product->category_id }}</td>
-              <td>{{ $product->slug }}</td>
               <td>{{ $product->code }}</td>
+              <td>{{ $product->stock }}</td>
               <td>{{ $product->price }}</td>
-              <td>{{ $product->description }}</td>
-              <td>{{ $product->product_feature }}</td>
+              <td>{{ $product->price_3 }}</td>
+              <td>{{ $product->price_6 }}</td>
+              <td>{{ $product->price_12 }}</td>
+              <td>{{ $product->price_25 }}</td>
               <td>{{ $product->top_sale }}</td>
               <td>{{ $product->flash_sale }}</td>
               <td>{{ $product->flash_sale_ratio }}</td>

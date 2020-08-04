@@ -11,6 +11,7 @@ class SearchController extends Controller
     public function searchProducts(Request $request)
     {
         // $seperate           =   explode(' ', $request->search_field);
+        $data['key']        =   $request->search_field;
         $data['products']   =   Product::where("name", "Like", "%".$request->search_field."%")->get();
         $data['length']     =   count($data['products']);
         return view('front.search.search', $data);

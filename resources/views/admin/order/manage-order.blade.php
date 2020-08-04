@@ -27,7 +27,8 @@
               <th>Order No</th>
               <th>Customer Name</th>
               <th>Phone</th>
-              <th>Status</th>
+              <th>Payment Status</th>
+              <th>Order Status</th>
               <th>Time</th>
               <th>Action</th>
             </tr>
@@ -38,7 +39,8 @@
               <th>Order No</th>
               <th>Customer Name</th>
               <th>Phone</th>
-              <th>Status</th>
+              <th>Payment Status</th>
+              <th>Order Status</th>
               <th>Time</th>
               <th>Action</th>
             </tr>
@@ -51,7 +53,38 @@
               <td>{{ $shipping->id }}</td>
               <td>{{ $shipping->name }}</td>
               <td>{{ $shipping->phone }}</td>
-              <td>{{ $shipping->status }}</td>
+              <td>
+              <form action="{{ route("admin.users.update", ["user" => $shipping->id]) }}" method="post">
+                    @csrf
+                    @method("PUT")
+                    <div class="form-group">
+                        <select class="form-control" name="status">
+                            <option selected>{{ $shipping->status }}</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Success">Success</option>
+                        </select>
+                    </div>
+                    <input class="btn btn-primary btn-sm btn-block" type="submit" name="update" value="Update" >
+                </form>
+              </td>
+              <td>
+                <form action="{{ route("admin.order.update", ["order" => $shipping->id]) }}" method="post">
+                    @csrf
+                    @method("PUT")
+                    <div class="form-group">
+                        <select class="form-control" name="order_status">
+                            <option selected>{{ $shipping->order_status }}</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Processing">Processing</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Success">Success</option>
+                            <option value="Cancel">Cancel</option>
+                        </select>
+                    </div>
+                    <input class="btn btn-primary btn-sm btn-block" type="submit" name="update" value="Update" >
+                </form>
+              </td>
+              
               <td>{{ $shipping->created_at }}</td>
               <td>
                 <a href="{{ route("admin.order.show", ["order" => $shipping->id ]) }}" class="btn btn-primary btn-sm" title="View details">

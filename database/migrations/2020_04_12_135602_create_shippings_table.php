@@ -16,10 +16,11 @@ class CreateShippingsTable extends Migration
         Schema::create('shippings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('address');
             $table->tinyInteger('delivery');
             $table->string('status')->default('Pending');
+            $table->string('order_status')->default('Pending');
             $table->timestamps();
         });
     }

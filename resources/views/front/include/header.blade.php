@@ -1,119 +1,74 @@
-<section class="top-header bg-dark">
+<section class="top-header bg-green">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6 col-sm-12">
                 <ul class="top-header-list flex mb-1 mt-0">
-                    <li><a href="" class="text-decoration-none pr-3 heading-5"><i class="fas fa-phone"></i> Hotline : 01666-666666, 01777-777777</a></li>
-                    <!-- <div class="container">
-                        <input type="text" placeholder="Search...">
-                        <div class="search"></div>
-                    </div> -->
+                    <li><span class="pr-3 heading-5 text-white"><i class="fas fa-phone"></i> Hotline : +880 1947325581, +880 1750521719</span></li>
                 </ul>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-md-6 col-sm-12">
                 <ul class="top-header-list flex mb-1 mt-0 justify-content-end">
-                    <li><a href="#" class="text-decoration-none pr-3 heading-5" data-toggle="modal" data-target="#trackId"><i class="fas fa-map-marker-alt"></i> Track Order</a></li>
-                    <li><a href="" class="text-decoration-none pr-3 heading-5"><i class="fas fa-user"></i>  Sign up</a></li>
-                    <li><a href="" class="text-decoration-none heading-5"><i class="fas fa-address-card"></i>  My Account</a></li>
+                    @if(Session::get('customer_id'))
+                        <li><a href="{{ route("customer-logout") }}" class="text-decoration-none pr-3 heading-5 text-white"><i class="fas fa-arrow-right"></i>  LogOut</a></li>
+                    @endif
+                    <li><a href="#" class="text-decoration-none pr-3 heading-5 text-white" data-toggle="modal" data-target="#trackId"><i class="fas fa-map-marker-alt"></i> Track Order</a></li>
+                    <li><a href="{{ route("my-account") }}" class="text-decoration-none heading-5 text-white"><i class="fas fa-address-card"></i>  My Account</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
-<section class="header bg-blue">
-<div class="container">
-    <nav class="navbar navbar-expand-lg p-0">
-        <a class="navbar-brand text-decoration-none" href="/">
-            <img src="{{ asset("/") }}front/images/weblogo.png"  class="img-thumbnail" alt=""/>
-        </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="fas fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-                <form action="{{ route("search/products") }}" method="post" class="search-form pr-3" id="searchProduct">
+<section class="bg-white">
+    <div class="container">
+        <div class="row py-1">
+            <div class="col-lg-3 col-md-4">
+                <div class="logo">
+                    <a class="text-decoration-none" href="/">
+                        <img src="{{ asset("/") }}front/images/weblogo.png"  class="img-fluid shadow-sm" alt=""/>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-8">
+                <form action="{{ route("search/products") }}" method="post" class="search-form py-3" id="searchProduct">
                     @csrf
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search_field" placeholder="Search In YourShop" id="searchField">
+                        <input type="text" class="form-control border-green c-green" name="search_field" placeholder="Search In HalalGhor" id="searchField">
                         <div class="input-group-append">
-                            <button class="btn btn-danger" type="submit"> <i class="fas fa-search"></i> </button>
+                            <button class="btn bg-green text-white" type="submit"> <i class="fas fa-search"></i> </button>
                         </div>
                     </div>
                 </form>
-                <span class="navbar-text">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="text-decoration-none"  href="/">Home</a>
-                        </li>
-                        @if(Route::currentRouteName() != '/')
-                        <li class="nav-item pl-3" id="headerCategories">
-                            <a class="text-decoration-none"  href="/"><i class="fas fa-th"></i> Categories <i class="fas fa-caret-down"></i></a>
-                            <ul class="position-absolute header-sub-menu bg-light d-none rounded bb-yellow" id="categories-drop-down">
-                                <div class="container pt-4 pl-4 pb-4">
-                                    @foreach($categories as $category)
-                                        <a class="text-decoration-none" href="{{route("product-category", ['id'  =>  $category->id])}}"><li><i class="fas fa-plus-square"></i> {{$category->category_name}}</li></a>
-                                    @endforeach
-                                </div>
-                            </ul>
-                        </li>
-                        @endif
-                        
-                        <li class="nav-item pl-3">
-                            <a class="text-decoration-none"  href="{{ route("login/user") }}"><i class="fas fa-user-circle"></i> Login</a>
-                        </li>
-                        <!-- @foreach($categories as $category)
-                        <li class="nav-item pl-3" id="electronics">
-                            <a class="text-decoration-none"  href="">{{$category->category_name}}</a>
-                            <ul class="position-absolute sub-menu d-none rounded bb-yellow p-5 bl-blue" id="electronics-sub-menu">
-                                <div class="container">
-                                    <div class="row text-center">
-                                        <div class="col-lg-2">
-                                            <li class="heading-4 c-blue font-weight-bold bb-yellow">Casual</li>
-                                            @foreach(App\Category::where('publication_status',1)->where('parent_id',$category->id)->get() as $sub_category)
-                                                <li>{{$sub_category->category_name}}</li>
-                                            @endforeach
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <li class="heading-4 c-blue font-weight-bold bb-yellow">Heading</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <li class="heading-4 c-blue font-weight-bold bb-yellow">Heading</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <li class="heading-4 c-blue font-weight-bold bb-yellow">Heading</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                            <li>hover</li>
-                                        </div>
-                                        <div class="col-lg-4">
-                                             <img src="{{ asset("/") }}front/images/p5.jpg"  class="img-thumbnail" alt=""/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ul>
-                        </li>
-                        @endforeach -->
-                        <!-- <li class="nav-item pr-3">
-                            <a class="text-decoration-none"  href="/"> Grocery</a>
-                        </li>
-                        <li class="nav-item pr-3">
-                            <a class="text-decoration-none last"href="/contact">Women's Fashion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="text-decoration-none last"href="/contact">Kid's Fashion</a>
-                        </li> -->
-                    </ul>
-                </span>
             </div>
-            </nav>
+            <div class="col-lg-2 social d-lg-block d-md-none">
+                <ul class="nav py-3 justify-content-between">
+                    <li class="nav-link pl-0"><a href="https://www.facebook.com/halalghor"><i class="fab fa-facebook c-green"></i></a></li>
+                    <li class="nav-link"><a href="https://www.twitter.com/halalghor"><i class="fab fa-twitter c-green"></i></a></li>
+                    <li class="nav-link pr-0"><a href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/"><i class="fab fa-youtube c-green"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sticky-top nav-bottom alert-gray shadow-sm">
+    <div class="container">
+        <div class="row py-1">
+            <div class="col-lg-12">
+                <div class="menu">
+                    <ul class="nav">
+                        <li class="nav-link bg-green btn" id="sideMenuBtn"><a class="text-white"><i class="fas fa-bars"></i></a></li>
+                        <li class="nav-link font-weight-bold"><a href="/" class="c-blue"><i class="fas fa-home c-green"></i> Home</a></li>
+                        @if(Session::get("customer_id"))
+                            <li class="nav-link font-weight-bold position-absolute dropdown-menu-right">
+                                <span class="c-blue"><i class="fas fa-user c-green"></i> {{ Session::get("customer_name") }}</span>
+                            </li>
+                        @else
+                            <li class="nav-link font-weight-bold position-absolute dropdown-menu-right">
+                                <a class="c-blue"  href="{{ route("login") }}"><i class="fas fa-user c-green"></i> Login / Sign Up</a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </section>
