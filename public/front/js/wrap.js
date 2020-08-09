@@ -1,13 +1,34 @@
 $(function(){
-    $(document).on("change", "#wrap", function(event){
+    $(document).on("change", "#GiftWrap", function(event){
         event.preventDefault();
+        let subVal =   $("#subTotal").text();
+        let granVal =   $("#GrandTotal").text();
         if(this.checked)
         {
-            $("#wrap_val").val(1);
+            if(subVal == granVal)
+            {
+                let newVal  =   parseFloat(subVal) + parseFloat(20);
+                $("#GrandTotal").text(newVal);
+                $("#newOrderTotal").val(newVal);
+                $("#giftWrapAmount").text(20);
+                $("#checkoutWrap").val(1);
+            }
+            else
+            {
+                let newVal  =   parseFloat(granVal) + parseFloat(20);
+                $("#GrandTotal").text(newVal);
+                $("#newOrderTotal").val(newVal);
+                $("#giftWrapAmount").text(20);
+                $("#checkoutWrap").val(1);
+            }
         }
         else
         {
-            $("#wrap_val").val(0);
+            let newVal  =   parseFloat(granVal) - parseFloat(20);
+            $("#GrandTotal").text(newVal);
+            $("#newOrderTotal").val(newVal);
+            $("#giftWrapAmount").text(0);
+            $("#checkoutWrap").val(0);
         }
 
     })

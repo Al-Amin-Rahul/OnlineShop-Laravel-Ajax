@@ -21,7 +21,8 @@ class OrderDetail extends Model
             $orderDetail->product_price     =   $cartItem->price;
             $orderDetail->product_qty       =   $cartItem->qty;
             $orderDetail->product_weight    =   $cartItem->weight;
-            $orderDetail->product_wrap      =   $cartItem->options->wrap;
+            $orderDetail->dis_code          =   $request->coupon_id;
+            $orderDetail->product_wrap      =   $request->wrap;
             $orderDetail->order_total       =   $request->new_order_total ?? Session::get('totalPrice');
             $orderDetail->customer_id       =   Session::get('customer_id');
             $orderDetail->save();

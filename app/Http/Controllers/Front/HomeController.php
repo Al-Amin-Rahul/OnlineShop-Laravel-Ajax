@@ -57,7 +57,7 @@ class HomeController extends Controller
     public function productDetails($slug)
     {
         $data['product']            =   Product::all()->where("slug", $slug)->first();
-        $data['similar_products']   =   Category::with('products')->where('publication_status', 1)->where('id', $data['product']->category_id)->get();
+        $data['similar_products']   =   Category::with('products')->where('publication_status', 1)->where('id', $data['product']->category_id)->orderBy("id", "desc")->get();
         $data['comments']           =   Comment::where('product_id', $data['product']->id)->orderBy("id", "desc")->take(5)->get();
         $data['length']             =   count(Comment::where('product_id', $data['product']->id)->orderBy("id", "desc")->get());
         return view('front.product.product-details', $data);
@@ -76,7 +76,7 @@ class HomeController extends Controller
 
     public function showConfirmation()
     {
-        return view('front.thank-you.thank-you')->with('message', ',, Thank You For Your Valuable Order Our Support Team Will Contact With You Soon !!!');
+        return view('front.thank-you.thank-you')->with('message', 'আসসালামু আলাইকুম , আপনার অর্ডারটি সম্পন্ন হয়েছে। খুব তারাতাড়ি আপনার সাথে যোগাযোগ করা হবে ইনশাআল্লাহ্‌  !!!');
     }
 
     public function showOrder(Request $request)

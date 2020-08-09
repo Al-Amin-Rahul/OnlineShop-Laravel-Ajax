@@ -41,7 +41,7 @@ HalalGhor - Mela
         </div>
         <div class="row">
             @foreach($melar_products as $product)
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                         class="text-decoration-none">

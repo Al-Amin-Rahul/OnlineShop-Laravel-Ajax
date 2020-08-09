@@ -17,8 +17,10 @@ class CreateShippingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('phone');
+            $table->string('email')->nullable();
             $table->string('address');
             $table->tinyInteger('delivery');
+            $table->string('payment_status');
             $table->string('status')->default('Pending');
             $table->string('order_status')->default('Pending');
             $table->timestamps();

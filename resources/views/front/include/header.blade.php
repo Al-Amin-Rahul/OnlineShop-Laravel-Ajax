@@ -11,7 +11,11 @@
                     @if(Session::get('customer_id'))
                         <li><a href="{{ route("customer-logout") }}" class="text-decoration-none pr-3 heading-5 text-white"><i class="fas fa-arrow-right"></i>  LogOut</a></li>
                     @endif
+                    @if(Session::get('customer_id'))
                     <li><a href="#" class="text-decoration-none pr-3 heading-5 text-white" data-toggle="modal" data-target="#trackId"><i class="fas fa-map-marker-alt"></i> Track Order</a></li>
+                    @else
+                    <li><a href="{{ route("login") }}" class="text-decoration-none pr-3 heading-5 text-white"><i class="fas fa-map-marker-alt"></i> Track Order</a></li>
+                    @endif
                     <li><a href="{{ route("my-account") }}" class="text-decoration-none heading-5 text-white"><i class="fas fa-address-card"></i>  My Account</a></li>
                 </ul>
             </div>

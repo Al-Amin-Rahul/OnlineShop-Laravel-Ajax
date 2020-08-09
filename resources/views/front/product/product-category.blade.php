@@ -40,14 +40,14 @@ HalalGhor - Product Category
         </div>
         <div class="row">
             @foreach($category->products as $product)
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
                         <div class="banner img-hover-zoom"><img src="{{asset($product->image)}}" class="" alt=""
                                 width="100%"></div>
                         <div class="title text-center name-overflow" title="{{ ($product->name) }}">
                             <span>{{ $product->name }}</span></div>
-                            @if($product->category_id == 7 && $product->flash_sale == 1)
+                        @if($product->category_id == 7 && $product->flash_sale == 1)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($product->price_3 - (($product->price_3 * $product->flash_sale_ratio) / 100)), 2) }}
                                 -
@@ -87,6 +87,10 @@ HalalGhor - Product Category
                         @elseif($product->daily_offer == 1)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($product->price - (($product->price * $product->daily_offer_ratio) / 100)), 2) }}</span>
+                        </div>
+                        @elseif($product->mela == 1)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ number_format(($product->price - (($product->price * $product->mela_offer_ratio) / 100)), 2) }}</span>
                         </div>
                         @else
                         <div class="price text-center"><span class="c-green font-weight-bold">৳

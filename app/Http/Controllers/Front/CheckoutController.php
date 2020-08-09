@@ -75,6 +75,7 @@ class CheckoutController extends Controller
             $orderDetail->insertOrderDetail($cartItems, $shipping, $request);
             Cart::destroy();
 
+            Session::put('customer_name', $request->name);
             Session::put('phone', $request->phone);
             Session::put('order_id', '1000'.$shipping->id);
 
@@ -131,44 +132,55 @@ class CheckoutController extends Controller
 
     public function applyCoupon(Request $request)
     {
-        $date   =   new Carbon;
-        $code   =   $request->code;
-        $check  =   Coupon::where("coupon_code", $request->code)->where("expire_date", ">", $date)->get();
-        if(count($check) == "1")
+        if(Session::get('customer_id'))
         {
-            $userId     =   Session::get('customer_id');
-            $checkUsed  =   UsedCoupon::where('user_id', $userId)->where('coupon_id',$check[0]->id)->count();
-            
-            if($checkUsed=="0")
+            $date   =   new Carbon;
+            $code   =   $request->code;
+            $check  =   Coupon::where("coupon_code", $request->code)->where("expire_date", ">", $date)->get();
+            if(count($check) == "1")
             {
-                $dis        =   $check[0]->discount;
-                $newTotal   =   Cart::priceTotal() - ( Cart::priceTotal() * $check[0]->discount / 100 );
+                $userId     =   Session::get('customer_id');
+                $checkUsed  =   UsedCoupon::where('user_id', $userId)->where('coupon_id',$check[0]->id)->count();
                 
-                return ([
-                    'alert'      =>  'Applied',
-                    'code'       =>  $code,
-                    'dis'        =>  $check[0]->discount,  
-                    'newTotal'   =>  $newTotal,  
-                    'coupon_id'  =>  $check[0]->id,
-                    'user_id'    =>  $userId
-                ]);
+                if($checkUsed=="0")
+                {
+                    $dis        =   $check[0]->discount;
+                    $newTotal   =   Cart::priceTotal() - ( Cart::priceTotal() * $check[0]->discount / 100 );
+                    
+                    return ([
+                        'alert'      =>  'Applied',
+                        'code'       =>  $code,
+                        'dis'        =>  $check[0]->discount,  
+                        'newTotal'   =>  $newTotal,  
+                        'coupon_id'  =>  $check[0]->id,
+                        'user_id'    =>  $userId
+                    ]);
+                }
+                else
+                {
+                    return([
+                        'dis'        =>  0,  
+                        'newTotal'   =>  Cart::pricetotal(),  
+                        'alert'     =>  "You Already Used This Coupon"
+                    ]);
+                }
+
             }
             else
             {
                 return([
                     'dis'        =>  0,  
                     'newTotal'   =>  Cart::pricetotal(),  
-                    'alert'     =>  "You Already Used This Coupon"
+                    'alert'     =>  "Sorry The Coupon Is Not Valid"
                 ]);
             }
-
         }
         else
         {
             return([
                 'dis'        =>  0,  
                 'newTotal'   =>  Cart::pricetotal(),  
-                'alert'     =>  "Sorry The Coupon Is Not Valid"
+                'alert'     =>  "You Have To Login First !"
             ]);
         }
     }

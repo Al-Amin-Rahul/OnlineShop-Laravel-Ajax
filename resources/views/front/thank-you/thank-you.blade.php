@@ -7,8 +7,8 @@
 @section('body')
     <section class="thank-you pt-5 pb-5">
         <div class="container">
-            <div class="alert bg-success c-wheat">
-                Dear {{ Session::get('customer_name') }} {{ $message }}
+            <div class="alert alert-primary">
+                {{ $message }}
             </div>
             <div class="row pt-4">
                 <div class="col-lg-12">

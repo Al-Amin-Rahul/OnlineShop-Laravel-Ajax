@@ -117,6 +117,9 @@ HalalGhor - Top Sale
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->mela_offer_ratio) / 100)), 2) }}</span>
                         </div>
+                        @else
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ $top_sale->price }}</span></div>
                         @endif
                         @endif
                         @if($top_sale->category_id == 3 || $top_sale->category_id == 4 || $top_sale->category_id == 7)

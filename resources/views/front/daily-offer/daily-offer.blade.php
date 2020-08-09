@@ -41,7 +41,7 @@ HalalGhor - Today's Offer
         </div>
         <div class="row">
             @foreach($daily_offer_products as $daily_offer_product)
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $daily_offer_product->slug])}}"
                         class="text-decoration-none">

@@ -40,6 +40,27 @@
                             <th>Payment Status</th>
                             <td>{{ $shipping->status }}</td>
                         </tr>
+                        @if($shipping->payment_status == 1)
+                        <tr>
+                            <th>Payment Type</th>
+                            <td>Cash On Delivery</td>
+                        </tr>
+                        @elseif($shipping->payment_status == 2)
+                        <tr>
+                            <th>Payment Type</th>
+                            <td>Bkash</td>
+                        </tr>
+                        @elseif($shipping->payment_status == 3)
+                        <tr>
+                            <th>Payment Type</th>
+                            <td>Rocket</td>
+                        </tr>
+                        @else
+                        <tr>
+                            <th>Payment Type</th>
+                            <td></td>
+                        </tr>
+                        @endif
                         <tr>
                             <th>Order Id</th>
                             <td>{{ $shipping->id }}</td>
@@ -70,7 +91,7 @@
                             <th>Unit price (BDT)</th>
                             <th>Quantity</th>
                             <th>Weight</th>
-                            <th>Gift Wrap</th>
+                            <th></th>
                             <th>Price (BDT)</th>
                         </tr>
                         </thead>
@@ -84,16 +105,23 @@
                             <td>{{ $price = $orderDetail->product_price }}</td>
                             <td>{{ $qty = $orderDetail->product_qty }}</td>
                             <td>{{ $weight = $orderDetail->product_weight }}</td>
-                            @if($orderDetail->product_wrap == 1)
-                                <td>Gift Wrap</td>
-                            @else
-                                <td>No</td>
-                            @endif
+                            <td></td>
                             <td>{{ $total = $price * $qty }}
                             {{Session::put('totalPrice', $orderDetail->order_total)}}
                             </td>
                         </tr>
                         @endforeach
+                        @if($orderDetail->dis_code)
+                        <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Discount Id</th>
+                        <th>{{ $orderDetail->dis_code }}</th>
+                        </tr>
+                        @endif
                         <tr>
                         <th></th>
                         <th></th>
@@ -103,6 +131,26 @@
                         <th>Delivery Charge</th>
                         <th>{{ $shipping->delivery }} Tk</th>
                         </tr>
+                        @if($orderDetail->product_wrap == 1)
+                        <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Gift Wrap</th>
+                        <th>20 Tk</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Total (BDT)</th>
+                            <th>TK. {{$grandTotal   =   20 + $shipping->delivery + Session::get('totalPrice')}}</th>
+                        </tr>
+                        @else
                         <tr>
                             <th></th>
                             <th></th>
@@ -112,6 +160,7 @@
                             <th>Total (BDT)</th>
                             <th>TK. {{$grandTotal   =   $shipping->delivery + Session::get('totalPrice')}}</th>
                         </tr>
+                        @endif
                         </tbody>
                     </table>
 

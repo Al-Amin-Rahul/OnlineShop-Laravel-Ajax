@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Shipping;
 use App\OrderDetail;
 use App\Product;
+use App\Coupon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -54,8 +55,8 @@ class OrderController extends Controller
         $shipping     =   Shipping::find($id);
         $orderDetails =   OrderDetail::where('order_id', $id)->get();
         return view('admin.order.view-order-details', [
-            'shipping' => $shipping,
-            'orderDetails' => $orderDetails,
+            'shipping'      => $shipping,
+            'orderDetails'  => $orderDetails
         ]);
     }
 

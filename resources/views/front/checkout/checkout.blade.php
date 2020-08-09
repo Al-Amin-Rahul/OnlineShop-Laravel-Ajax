@@ -35,11 +35,15 @@ HalalGhor - Checkout
                                 <thead>
                                     <tr>
                                         <th>Sub Total</th>
-                                        <th>{{ Cart::priceTotal() }}</th>
+                                        <th id="subTotal">{{ Cart::priceTotal() }}</th>
                                     </tr>
                                     <tr>
                                         <th>Discount - <span id="code"></span></th>
                                         <th id="dis">0</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Gift Wrap</th>
+                                        <th id="giftWrapAmount">0</th>
                                     </tr>
                                     <tr>
                                         <th>Grand Total</th>
@@ -48,6 +52,11 @@ HalalGhor - Checkout
                                 </thead>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="checkbox" name="gift_wrap" id="GiftWrap" value=""> <label for="GiftWrap">Gift Wrap For Tk 20.(Perfume & Book)</label>
                     </div>
                 </div>
                 <div class="row pt-5">
@@ -82,6 +91,7 @@ HalalGhor - Checkout
                                     placeholder="example: John" required>
                             </div>
                         </div>
+                        <input type="hidden" name="wrap" value="0" id="checkoutWrap">
                         <input type="hidden" name="user_id" value="0" id="userId">
                         <input type="hidden" name="coupon_id" value="0" id="couponId">
                         <input type="hidden" name="new_order_total" value="{{ Cart::pricetotal() }}" id="newOrderTotal">
@@ -92,6 +102,11 @@ HalalGhor - Checkout
                                     placeholder="example: 017........" required>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="font-weight-bold">Email (Optional)</label>
+                        <input type="email" name="email" class="form-control" id="email"
+                            placeholder="john@gmail.com">
                     </div>
                     <div class="form-group">
                         <label for="address" class="font-weight-bold">Address</label>
@@ -140,4 +155,5 @@ HalalGhor - Checkout
 @endsection
 @section('js')
 <script src="{{ asset("/") }}front/js/coupon.js"></script>
+<script src="{{ asset("/") }}front/js/wrap.js"></script>
 @endsection

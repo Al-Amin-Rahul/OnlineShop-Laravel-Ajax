@@ -8,7 +8,7 @@
                     <li class="menu-item"><a href="{{ route("contact-us") }}" class="text-decoration-none">Contact Us</a></li>
                     <li class="menu-item"><a href="https://www.facebook.com/halalghor" target="_blank" class="text-decoration-none">Facebook</a></li>
                     <li class="menu-item"><a href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/" target="_blank" class="text-decoration-none">Youtube</a></li>
-                    <li class="menu-item badge badge-primary"><a href="" target="_blank" class="text-decoration-none">Blog</a></li>
+                    <li class="menu-item badge badge-primary"><a href="https://www.blog.halalghor.com" target="_blank" class="text-decoration-none">Blog</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 text-md-center text-lg-left text-center">

@@ -21,7 +21,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="row pt-5">
-                    <div class="col-lg-3 d-none d-lg-block bg-login-image"></div>
+                    <div class="col-lg-3 d-none d-lg-block"></div>
                     <div class="col-lg-6 pt-5">
                         <div class="shadow rounded  bg-warning p-5">
                             <div class="text-center">

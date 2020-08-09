@@ -30,9 +30,9 @@ class CustomerController extends Controller
             $customer->insertCustomer($request);
             $prevUrl     =   url()->previous();
             
-            if(Str::contains($prevUrl, 'checkout'))
+            if(Str::contains($request->url, 'buy-now'))
             {
-                return redirect()->route('checkout.index');
+                return redirect('checkout');
             }
             elseif($request->url)
             {
@@ -58,9 +58,10 @@ class CustomerController extends Controller
         $prevUrl     =   url()->previous();
         Session::put("customer_id", octdec(uniqid()));
         Session::put("customer_name", 'Guest_' . octdec(uniqid()));
-        if(Str::contains($prevUrl, 'checkout'))
+
+        if(Str::contains($request->url, 'buy-now'))
         {
-            return redirect()->route('checkout.index');
+            return redirect('checkout');
         }
         elseif($request->url)
         {
@@ -81,9 +82,10 @@ class CustomerController extends Controller
                 $prevUrl     =   url()->previous();
                 Session::put("customer_id", $customer->id);
                 Session::put("customer_name", $customer->customer_name);
-                if(Str::contains($prevUrl, 'checkout'))
+
+                if(Str::contains($request->url, 'buy-now'))
                 {
-                    return redirect()->route('checkout.index');
+                    return redirect('checkout');
                 }
                 elseif($request->url)
                 {
@@ -101,7 +103,7 @@ class CustomerController extends Controller
         }
         else
         {
-            return redirect()->back()->with('message', 'Invalid Email');
+            return redirect()->back()->with('message', 'Invalid Phone Number');
         }
     }
 }

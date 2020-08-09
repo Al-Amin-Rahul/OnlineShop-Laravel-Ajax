@@ -34,7 +34,7 @@
                             @php($sum=0)
                             @foreach(Cart::content() as $cartItem)
                             <tbody>
-                                <td>{{ $cartItem->name }}/ {{ $cartItem->options->wrap }}/ {{ $cartItem->weight }}</td>
+                                <td>{{ $cartItem->name }}/ {{ $cartItem->weight }}</td>
                                 <td><img src="{{asset( $cartItem->options->image )}}" width="50" alt=""></td>
                                 <td>
                                     <form action="{{ route("cart-update") }}" method="POST" id="updateCart">
@@ -75,11 +75,7 @@
                             </thead>
                             <tbody>
                                 <tr><td colspan="2" class="text-center">
-                                    @if(Session::get('customer_id'))
                                         <a href="{{route('checkout.index')}}" class="btn btn-deepblue">Checkout <i class="fas fa-arrow-right"></i></a>
-                                    @else
-                                        <a href="{{route('login') . '?=' . 'checkout' }}" class="btn btn-deepblue">Checkout <i class="fas fa-arrow-right"></i></a>
-                                    @endif
                                 </td></tr>
                             </tbody>
                         </table>

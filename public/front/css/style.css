@@ -1,5 +1,5 @@
 body {
-    font-family: 'Gabriela', serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 ul {
@@ -83,7 +83,12 @@ a {
 .cart-view img {
     padding: 8px 0 8px 0;
 }
-
+.testimonial img{
+    border-radius: 50%;
+    border: 5px solid gray;
+    width: 10% !important;
+    display: initial !important;
+}
 /* The footer menu view*/
 .side-menu-bar {
     height: 100%;
@@ -461,6 +466,10 @@ input[type=number] {
 }
 
 @media only screen and (max-width: 425px) {
+    .testimonial img
+    {
+        width: 30% !important;
+    }
     .nav-bottom {
         background-color: #89C74A !important;
     }
@@ -509,10 +518,4 @@ input[type=number] {
         border: none !important;
         box-shadow: none !important;
     }
-}
-.testimonial img{
-    border-radius: 50%;
-    border: 5px solid gray;
-    width: 10% !important;
-    display: initial !important;
 }

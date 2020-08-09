@@ -39,7 +39,7 @@ HalalGhor - Flash Sale
         </div>
         <div class="row">
             @foreach($flash_sales as $flash_sale)
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
                         class="text-decoration-none">

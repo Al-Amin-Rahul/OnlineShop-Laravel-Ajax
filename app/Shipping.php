@@ -14,8 +14,10 @@ class Shipping extends Model
     {
         $shipping->name         =   $request->name;
         $shipping->phone        =   $request->phone;
+        $shipping->email        =   $request->email;
         $shipping->address      =   $request->address;
         $shipping->delivery     =   $request->delivery;
+        $shipping->payment_status     =   $request->payment;
         $shipping->status       =   "Pending";
         $shipping->order_status =   "Pending";
         $shipping->save();

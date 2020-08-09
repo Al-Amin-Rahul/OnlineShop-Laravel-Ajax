@@ -40,7 +40,7 @@ class CouponController extends Controller
     {
         $coupon =   new Coupon();
         $validator = Validator::make($request->all(), [
-            "coupon_code"       => "required",
+            "coupon_code"       => "required|unique:coupons,coupon_code",
             "discount"          => "required",
             "expire_date"       => "required",
         ]);

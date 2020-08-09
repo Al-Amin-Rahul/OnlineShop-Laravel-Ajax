@@ -41,7 +41,7 @@ HalalGhor - {{ $occational_offer_title->occational_offer_title }}
         </div>
         <div class="row">
             @foreach($occational_offer_products as $occational_offer_product)
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $occational_offer_product->slug])}}"
                         class="text-decoration-none">

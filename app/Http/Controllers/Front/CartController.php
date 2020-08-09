@@ -86,14 +86,14 @@ class CartController extends Controller
             }
             // end weight
 
-            // gift wrap 
-            if($product->category_id == 7 || $product->category_id == 6) //perfume & Book
-            {
-                $wrap   =   $request->wrap_val;
-            }
-            else{
-                $wrap   =   0;
-            }
+            // // gift wrap 
+            // if($product->category_id == 7 || $product->category_id == 6) //perfume & Book
+            // {
+            //     $wrap   =   $request->wrap_val;
+            // }
+            // else{
+            //     $wrap   =   0;
+            // }
             // end 
 
             Cart::add([
@@ -104,7 +104,7 @@ class CartController extends Controller
                 'weight' => $weight, 
                 'options' => [
                     'image' => $product->image,
-                    'wrap'  => $wrap
+                    // 'wrap'  => $wrap
                     ]
                 ]);
         }
@@ -199,13 +199,13 @@ class CartController extends Controller
         {
             $weight =   0;
         }
-        if($product->category_id == 7 || $product->category_id == 6)
-        {
-            $wrap   =   $request->wrap;
-        }
-        else{
-            $wrap   =   0;
-        }
+        // if($product->category_id == 7 || $product->category_id == 6)
+        // {
+        //     $wrap   =   $request->wrap;
+        // }
+        // else{
+        //     $wrap   =   0;
+        // }
         Cart::add([
             'id' => $product->id, 
             'name' => $product->name, 
@@ -214,19 +214,12 @@ class CartController extends Controller
             'weight' => $weight, 
             'options' => [
                 'image' => $product->image,
-                'wrap'  => $wrap
+                // 'wrap'  => $wrap
                 ]
             ]);
 
-        if(Session::get('customer_id'))
-        {
             $data['cartItems']    =   Cart::content();
             return view('front.checkout.checkout', $data);
-        }
-        else
-        {
-            return redirect()->route('login');
-        }
         
     }
 

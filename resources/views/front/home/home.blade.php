@@ -50,15 +50,15 @@ HalalGhor - Home
     <div class="container">
         <div class="alert alert-gray c-blue">
             <div class="row">
-                <div class="col-lg-6 col-10 font-weight-bold">{{$occational_offer_title->occational_offer_title}} <i
+                <div class="col-lg-6 col-6 font-weight-bold">{{$occational_offer_title->occational_offer_title}} <i
                         class="fas fa-bomb c-green"></i></div>
-                <div class="col-lg-6 col-2 text-right font-weight-bold"><a href="{{ route("occational-offer") }}"
+                <div class="col-lg-6 col-6 text-right font-weight-bold"><a href="{{ route("occational-offer") }}"
                         class="c-blue">More <i class="fas fa-angle-right"></i></a></div>
             </div>
         </div>
         <div class="row">
             @foreach($occational_offer_products as $product)
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
                         <div class="banner img-hover-zoom"><img src="{{asset($product->image)}}" class="" alt=""
@@ -213,7 +213,7 @@ HalalGhor - Home
         </div>
         <div class="row">
             @foreach($flash_sales as $flash_sale)
-            <div class="col-lg-2 col-md-3 col-6 pb-3">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
                         class="text-decoration-none">
@@ -303,7 +303,7 @@ HalalGhor - Home
         </div>
         <div class="row">
             @foreach($top_sales as $top_sale)
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}" class="text-decoration-none">
                         <div class="banner img-hover-zoom"><img src="{{asset($top_sale->image)}}" class="" alt=""
@@ -428,7 +428,7 @@ HalalGhor - Home
             @if($count == 5)
             @continue
             @else
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
                         <div class="banner img-hover-zoom"><img src="{{asset($product->image)}}" class="" alt=""
@@ -573,7 +573,6 @@ HalalGhor - Home
             responsive: {
                 0: {
                     items: 1,
-                    nav:true,
                 },
                 768: {
                     items: 1,
