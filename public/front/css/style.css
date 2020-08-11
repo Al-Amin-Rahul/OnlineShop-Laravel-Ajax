@@ -199,8 +199,6 @@ a {
 
 /* goto top button  */
 #gotoTop {
-    border: 2px solid #89C74A;
-    border-radius: 50%;
     background-color: transparent;
     width: 50px;
     height: 50px;

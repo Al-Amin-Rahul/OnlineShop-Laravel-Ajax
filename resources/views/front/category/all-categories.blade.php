@@ -4,6 +4,11 @@
     HalalGhor - All Categories
 @endsection
 
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
     <section class="all-categories pt-5">
         <div class="container">

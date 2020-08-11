@@ -4,6 +4,11 @@
     HalalGhor - Login
 @endsection
 
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
 <section class="py-5">
     <div class="container">

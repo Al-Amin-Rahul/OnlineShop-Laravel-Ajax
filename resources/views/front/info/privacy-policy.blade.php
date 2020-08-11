@@ -4,6 +4,11 @@
     HalalGhor - Privacy Policy
 @endsection
 
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
     <section>
         <div class="container pt-5 pb-5">

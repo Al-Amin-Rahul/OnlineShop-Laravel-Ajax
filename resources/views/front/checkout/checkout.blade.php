@@ -4,6 +4,11 @@
 HalalGhor - Checkout
 @endsection
 
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
 <section class="checkout-form pt-5 pb-5">
     <div class="container">

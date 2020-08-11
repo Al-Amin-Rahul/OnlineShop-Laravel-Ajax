@@ -34,7 +34,7 @@
                             @php($sum=0)
                             @foreach($cartItems as $cartItem)
                             <tbody>
-                                <td>{{ $cartItem->name }}/ {{ $cartItem->weight }}</td>
+                                <td>{{ $cartItem->name }}</td>
                                 <td><img src="{{asset( $cartItem->options->image )}}" width="50" alt=""></td>
                                 <td>
                                     <form action="{{ route("cart-update") }}" method="POST" id="updateCart">

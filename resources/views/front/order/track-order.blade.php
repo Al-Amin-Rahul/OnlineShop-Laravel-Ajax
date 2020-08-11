@@ -4,6 +4,11 @@
     HalalGhor - Track Order
 @endsection
 
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
     <section class="thank-you pt-5 pb-5">
         <div class="container">

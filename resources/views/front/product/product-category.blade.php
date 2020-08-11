@@ -1,7 +1,12 @@
 @extends('front.master')
 
 @section('title')
-HalalGhor - Product Category
+HalalGhor - {{$category_products[0]->category_name}}
+@endsection
+
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
 @endsection
 
 @section('body')

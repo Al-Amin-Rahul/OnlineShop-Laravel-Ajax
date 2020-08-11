@@ -2,6 +2,12 @@
 @section('title')
     HalalGhor - Developer Info
 @endsection
+
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
 <div class="container">
         <section class="container mt-4 mb-4">

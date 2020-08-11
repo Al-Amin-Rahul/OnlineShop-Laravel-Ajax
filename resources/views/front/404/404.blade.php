@@ -3,6 +3,12 @@
 @section('title')
     HalalGhor - 404 Not Found
 @endsection
+
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
 <style>
 .cls-1 {

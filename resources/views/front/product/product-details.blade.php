@@ -3,6 +3,12 @@
 @section('title')
 HalalGhor - {{$product->name}}
 @endsection
+
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+
 @section('css')
 <link href="{{ asset("/") }}front/css/jquery.lighter.css" rel="stylesheet" type="text/css">
 @endsection
@@ -48,22 +54,22 @@ HalalGhor - {{$product->name}}
                             {{ number_format(($product->price_3 - (($product->price_3 * $product->flash_sale_ratio) / 100)), 2) }}
                             -
                             {{ number_format(($product->price_25 - (($product->price_25 * $product->flash_sale_ratio) / 100)), 2) }}
-                            <strike><small>{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
+                            <strike><small class="text-dark">{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
                         @elseif($product->category_id == 7 && $product->occational_offer == 1)
                             {{ number_format(($product->price_3 - (($product->price_3 * $product->occational_offer_ratio) / 100)), 2) }}
                             -
                             {{ number_format(($product->price_25 - (($product->price_25 * $product->occational_offer_ratio) / 100)), 2) }}
-                            <strike><small>{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
+                            <strike><small class="text-dark">{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
                         @elseif($product->category_id == 7 && $product->daily_offer == 1)
                             {{ number_format(($product->price_3 - (($product->price_3 * $product->daily_offer_ratio) / 100)), 2) }}
                             -
                             {{ number_format(($product->price_25 - (($product->price_25 * $product->daily_offer_ratio) / 100)), 2) }}
-                            <strike><small>{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
+                            <strike><small class="text-dark">{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
                         @elseif($product->category_id == 7 && $product->mela == 1)
                             {{ number_format(($product->price_3 - (($product->price_3 * $product->mela_offer_ratio) / 100)), 2) }}
                             -
                             {{ number_format(($product->price_25 - (($product->price_25 * $product->mela_offer_ratio) / 100)), 2) }}
-                            <strike><small>{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
+                            <strike><small class="text-dark">{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
                         @else
                             @if($product->flash_sale == 1)
                             {{ number_format(($product->price - (($product->price * $product->flash_sale_ratio) / 100)), 2) }}
@@ -147,11 +153,11 @@ HalalGhor - {{$product->name}}
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row">
+                        <div class="row">
                             <div class="socila-share col-lg-12">
-                                <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftest.halalghor.com%2Fproduct-details%2F{{$name}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftest.halalghor.com%2Fproduct-details%2F{{$product->slug}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <input type="hidden" name="id" value="{{ $product->id }}">

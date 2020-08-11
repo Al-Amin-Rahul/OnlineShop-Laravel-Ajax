@@ -5,7 +5,11 @@
 HalalGhor - Mela
 @endsection
 
-
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+@endsection
+ 
 @section('body')
 <section class="category-slider">
     <div class="container-fluid">

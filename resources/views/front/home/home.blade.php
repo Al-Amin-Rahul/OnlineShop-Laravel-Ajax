@@ -1,7 +1,10 @@
 @extends('front.master')
 
-@section('title')
-HalalGhor - Home
+@section('title')Halal Ghor - Halal Perfume, Book, Fashion & Food @endsection
+
+@section('meta')
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
 @endsection
 
 @section('css')
@@ -536,7 +539,7 @@ HalalGhor - Home
 @endforeach
 <section class="testimonial pb-5 pt-5 bg-green">
     <div class="container">
-        <h2 class="text-center font-weight-bold">Our Customers Say</h2>
+        <h2 class="text-center font-weight-bold">Our Customer's Say</h2>
         <div class="slider">
             <div class="owl-carousel">
                 @foreach($feedbacks as $feedback)

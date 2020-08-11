@@ -8,16 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#89C74A">
     <title>@yield('title')</title>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="cache-control" content="public,max-age=86400,must-revalidate"/>
+    <meta name="msnbot" content="index,follow"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="googlebot" content="all"/>
+    @yield('meta')
+    <link rel="icon" href="{{asset('/')}}front/images/tab.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="{{ asset("/") }}front/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="{{ asset("/") }}admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     @yield('css')
     <link href="{{ asset("/") }}front/css/style.css" rel="stylesheet" type="text/css">
-    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Your Website Title" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
 
 </head>
 <body>

@@ -75,7 +75,7 @@ class CheckoutController extends Controller
             $orderDetail->insertOrderDetail($cartItems, $shipping, $request);
             Cart::destroy();
 
-            Session::put('customer_name', $request->name);
+            Session::put('shipping_name', $request->name);
             Session::put('phone', $request->phone);
             Session::put('order_id', '1000'.$shipping->id);
 
@@ -160,6 +160,7 @@ class CheckoutController extends Controller
                 {
                     return([
                         'dis'        =>  0,  
+                        'code'       =>  '',
                         'newTotal'   =>  Cart::pricetotal(),  
                         'alert'     =>  "You Already Used This Coupon"
                     ]);
@@ -170,6 +171,7 @@ class CheckoutController extends Controller
             {
                 return([
                     'dis'        =>  0,  
+                    'code'       =>  '',
                     'newTotal'   =>  Cart::pricetotal(),  
                     'alert'     =>  "Sorry The Coupon Is Not Valid"
                 ]);
