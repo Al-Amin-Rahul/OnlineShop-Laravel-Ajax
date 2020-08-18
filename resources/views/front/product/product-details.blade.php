@@ -50,7 +50,23 @@ HalalGhor - {{$product->name}}
                 <div class="code">Product Code : {{ $product->code }}</div>
                 <div class="price pb-3 c-green font-weight-bold h2">৳
                     <span class="c-green font-weight-bold">
-                        @if($product->category_id == 7 && $product->flash_sale == 1)
+                        @if($product->category_id == 7 && $product->price_25 == 0)
+                            @if($product->flash_sale == 1)
+                            {{ number_format(($product->price - (($product->price * $product->flash_sale_ratio) / 100)), 2) }}
+                            <strike><small class="text-dark">{{ $product->price }}</small></strike>
+                            @elseif($product->occational_offer == 1)
+                            {{ number_format(($product->price - (($product->price * $product->occational_offer_ratio) / 100)), 2) }}
+                            <strike><small class="text-dark">{{ $product->price }}</small></strike>
+                            @elseif($product->daily_offer == 1)
+                            {{ number_format(($product->price - (($product->price * $product->daily_offer_ratio) / 100)), 2) }}
+                            <strike><small class="text-dark">{{ $product->price }}</small></strike>
+                            @elseif($product->mela == 1)
+                            {{ number_format(($product->price - (($product->price * $product->mela_offer_ratio) / 100)), 2) }}
+                            <strike><small class="text-dark">{{ $product->price }}</small></strike>
+                            @else
+                            {{ $product->price }}
+                            @endif
+                        @elseif($product->category_id == 7 && $product->flash_sale == 1)
                             {{ number_format(($product->price_3 - (($product->price_3 * $product->flash_sale_ratio) / 100)), 2) }}
                             -
                             {{ number_format(($product->price_25 - (($product->price_25 * $product->flash_sale_ratio) / 100)), 2) }}
@@ -70,6 +86,8 @@ HalalGhor - {{$product->name}}
                             -
                             {{ number_format(($product->price_25 - (($product->price_25 * $product->mela_offer_ratio) / 100)), 2) }}
                             <strike><small class="text-dark">{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
+                        @elseif($product->category_id == 7)
+                            {{ $product->price_3 }} - {{ $product->price_25 }}
                         @else
                             @if($product->flash_sale == 1)
                             {{ number_format(($product->price - (($product->price * $product->flash_sale_ratio) / 100)), 2) }}
@@ -96,18 +114,18 @@ HalalGhor - {{$product->name}}
                     @else
                     <div class="stock text-danger"><i class="fas fa-ban"></i> Stock Out</div>
                     @endif
-                    <span><i class="fas fa-truck text-danger"></i> Delivery Within 2/3 Working Days</span>
+                    <span><i class="fas fa-truck text-danger"></i> Delivery Within 1-3 Working Days</span>
                 </div>
                 @if($product->stock != 0)
                 <form method="POST" action="{{route('buy-now')}}">
                     @csrf
                     <input type="hidden" name="url" value="{{ url()->previous() }}">
-                    @if($product->category_id == 7)
+                    @if($product->category_id == 7 && $product->price_25 != 0)
                     <div class="form-group w-50">
                         <select class="form-control" id="weight" name="weight" data-id="{{ $product->id }}"
                             data-url="{{ url('show-perfume-price') }}">
                             <option value="0" selected="true" disabled="disabled">Select Option</option>
-                            <option value="price_3">3.5 ml</option>
+                            <option value="price_3">3 ml</option>
                             <option value="price_6">6 ml</option>
                             <option value="price_12">12 ml</option>
                             <option value="price_25">25 ml</option>
@@ -138,7 +156,7 @@ HalalGhor - {{$product->name}}
                     </div>
                     @endif
 
-                    @if($product->category_id == 7)
+                    @if($product->category_id == 7 && $product->price_25 != 0)
                     <div class="price pb-3 text-danger font-weight-bold">৳ <span id="showPrice"></span></div>
                     <input type="hidden" name="perfume_price" value="0" id="perfumePrice">
                     @endif
@@ -161,8 +179,10 @@ HalalGhor - {{$product->name}}
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <input type="hidden" name="id" value="{{ $product->id }}">
-                                @if($product->category_id == 7 || $product->category_id == 3 || $product->category_id ==
-                                4)
+                                @if($product->category_id == 7 && $product->price_25 != 0)
+                                <input type="submit" name="btn" value="Buy Now" id="buyNowBtn"
+                                    class="btn btn-danger btn-link disabled btn-block">
+                                @elseif($product->category_id == 3 || $product->category_id == 4)
                                 <input type="submit" name="btn" value="Buy Now" id="buyNowBtn"
                                     class="btn btn-danger btn-link disabled btn-block">
                                 @else
@@ -177,7 +197,7 @@ HalalGhor - {{$product->name}}
                         <form action="{{route('add-to-cart')}}" method="POST" id="addToCartForm">
                             @csrf
                             <input type="hidden" name="weight" value="0" id="cartWeight">
-                            @if($product->category_id == 7)
+                            @if($product->category_id == 7 && $product->price_25 != 0)
                             <input type="hidden" name="perfume_price_cart" value="0" id="perfume_price_cart">
                             @endif
                             @if($product->category_id == 7 || $product->category_id == 6)
@@ -185,7 +205,7 @@ HalalGhor - {{$product->name}}
                             @endif
                             <input type="hidden" name="qty" value="1" id="cartQty">
                             <input type="hidden" name="id" value="{{ $product->id }}">
-                            @if($product->category_id == 3 || $product->category_id == 4 || $product->category_id == 7)
+                            @if($product->category_id == 3 || $product->category_id == 4 || $product->category_id == 7 && $product->price_25 != 0)
                             <input type="submit" name="btn" value="Add to Cart" id="addCartBtn"
                                 class="btn btn-success btn-block btn-link disabled">
                             @else
@@ -265,7 +285,7 @@ HalalGhor - {{$product->name}}
             <div class="col-lg-6">
                 <div class="wrapper" id="showComment">
                     @if($length == NULL)
-                    <div class="font-weight-bolder alert bg-pink">No Reviews Yet</div>
+                    <div class="font-weight-bolder alert alert-primary">No Reviews Yet</div>
                     @else
                     <div class="alert alert-success text-right">Total Rating and Reviews <span
                             class="badge badge-warning">{{ $length }}</span></div>
@@ -308,7 +328,9 @@ HalalGhor - {{$product->name}}
                 </div>
             </div>
             <div id="commentShow" data-url="{{ url('show-comment') }}" data-id="{{ $product->id }}"></div>
+            
             <div class="col-lg-6">
+            <hr>
                 <form action="{{ route("comment.store") }}" method="post" id="commentForm">
                     @csrf
                     <div class="form-group">
@@ -363,7 +385,7 @@ HalalGhor - {{$product->name}}
                                             10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 " />
                                 </svg>
                             </label>
-                            <span class="badge badge-warning">Rate This Product</span>
+                            <span class="badge badge-warning">Select Star</span>
                         </div>
                     </div>
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -371,22 +393,22 @@ HalalGhor - {{$product->name}}
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <input type="text" name="name" id=""
-                                    class="form-control border-radius-99 border border-green" placeholder="Name">
+                                    class="form-control" placeholder="Name">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <input type="number" name="phone" id=""
-                                    class="form-control border-radius-99 border border-green" placeholder="Phone">
+                                    class="form-control" placeholder="Phone">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea name="comment" class="form-control border-radius-99 border border-green" id=""
+                        <textarea name="comment" class="form-control" id=""
                             cols="30" rows="2" placeholder="Comment Here..."></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Post Review" class="border-radius-99 btn btn-success btn-block">
+                        <input type="submit" value="Post Review" class="btn btn-green btn-block">
                     </div>
                 </form>
             </div>
@@ -408,10 +430,10 @@ HalalGhor - {{$product->name}}
             @php($count = 0)
             @foreach($category->products as $similar_product)
             @php($count++)
-            @if($count == 5)
+            @if($count >= 7)
             @continue
             @else
-            <div class="col-lg-2 col-md-3 col-6">
+            <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $similar_product->slug])}}"
                         class="text-decoration-none">
@@ -442,8 +464,30 @@ HalalGhor - {{$product->name}}
                         <!-- review -->
 
                         <div class="title text-center name-overflow" title="{{ ($similar_product->name) }}">
-                            <span>{{ $similar_product->name }}</span></div>
-                        @if($similar_product->category_id == 7 && $similar_product->flash_sale == 1)
+                            <span>{{ $similar_product->name }}</span>
+                        </div>
+                        @if($similar_product->category_id == 7 && $similar_product->price_25 == 0)
+                            @if($similar_product->flash_sale == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->flash_sale_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($similar_product->occational_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->occational_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($similar_product->daily_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->daily_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($similar_product->mela == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->mela_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @else
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ $similar_product->price }}</span></div>
+                            @endif
+                        @elseif($similar_product->category_id == 7 && $similar_product->flash_sale == 1)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($similar_product->price_3 - (($similar_product->price_3 * $similar_product->flash_sale_ratio) / 100)), 2) }}
                                 -
@@ -472,28 +516,33 @@ HalalGhor - {{$product->name}}
                             {{ $similar_product->price_3 }} - {{ $similar_product->price_25 }}
                         </div>
                         @else
-                        @if($similar_product->flash_sale == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->flash_sale_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @elseif($similar_product->occational_offer == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->occational_offer_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @elseif($similar_product->daily_offer == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->daily_offer_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @elseif($similar_product->mela == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->mela_offer_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @else
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ $similar_product->price }}</span></div>
+                            @if($similar_product->flash_sale == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->flash_sale_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($similar_product->occational_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->occational_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($similar_product->daily_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->daily_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($similar_product->mela == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($similar_product->price - (($similar_product->price * $similar_product->mela_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @else
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ $similar_product->price }}</span></div>
+                            @endif
                         @endif
-                        @endif
-                        @if($similar_product->category_id == 3 || $similar_product->category_id == 4 || $similar_product->category_id == 7)
+                        @if($similar_product->category_id == 7 && $similar_product->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $similar_product->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($similar_product->category_id == 3 || $similar_product->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $similar_product->slug])}}"
                                 class="btn btn-green">Select Size</a>

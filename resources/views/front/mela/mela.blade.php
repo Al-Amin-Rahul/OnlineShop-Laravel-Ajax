@@ -80,7 +80,14 @@ HalalGhor - Mela
                         <div class="badge badge-danger position-absolute border-radius-99 product-offer-badge">
                             -{{ $product->mela_offer_ratio }}%</div>
                         @endif
-                        @if($product->category_id == 7 && $product->mela == 1)
+                        @if($product->category_id == 7 && $product->price_25 == 0)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ number_format(($product->price - (($product->price * $product->mela_offer_ratio) / 100)), 2) }}</span>
+                        </div>
+                        <div class="strike text-center">
+                            <strike><small>{{ $product->price }}</small></strike>
+                        </div>
+                        @elseif($product->category_id == 7 && $product->mela == 1)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($product->price_3 - (($product->price_3 * $product->mela_offer_ratio) / 100)), 2) }}
                                 -
@@ -102,7 +109,12 @@ HalalGhor - Mela
                         </div>
                         @endif
                         <!-- cart  -->
-                        @if($product->category_id == 3 || $product->category_id == 4 || $product->category_id == 7)
+                        @if($product->category_id == 7 && $product->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($product->category_id == 3 || $product->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                                 class="btn btn-green">Select Size</a>

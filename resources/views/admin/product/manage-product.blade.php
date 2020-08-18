@@ -29,7 +29,7 @@
               <th>Code</th>
               <th>Stock</th>
               <th>Price</th>
-              <th>3.5</th>
+              <th>3</th>
               <th>6</th>
               <th>12</th>
               <th>25</th>
@@ -53,7 +53,7 @@
               <th>Code</th>
               <th>Stock</th>
               <th>Price</th>
-              <th>3.5</th>
+              <th>3</th>
               <th>6</th>
               <th>12</th>
               <th>25</th>

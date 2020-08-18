@@ -15,6 +15,7 @@
     <meta name="msnbot" content="index,follow"/>
     <meta name="robots" content="index,follow"/>
     <meta name="googlebot" content="all"/>
+    <meta property="fb:app_id" content="345891736236545"/>
     @yield('meta')
     <link rel="icon" href="{{asset('/')}}front/images/tab.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">

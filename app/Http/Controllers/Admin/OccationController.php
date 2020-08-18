@@ -16,7 +16,7 @@ class OccationController extends Controller
      */
     public function index()
     {
-        $data['occation']   =   OccationalOffer::find(1);
+        $data['occation']   =   OccationalOffer::first();
         return view('admin.offer.manage-occational', $data);
     }
 
@@ -107,6 +107,9 @@ class OccationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $occation = OccationalOffer::find($id);
+
+        // $occation->delete($id);
+        // return redirect()->back()->with('message', 'Deleted Successfully !');
     }
 }

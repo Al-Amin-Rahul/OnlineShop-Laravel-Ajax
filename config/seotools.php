@@ -14,7 +14,7 @@ return [
             'description'  => 'আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => ['halalghor', 'halal ghor', 'HalalGhor', 'Halal Ghor', 'halal', 'Online Shopping'],
-            'canonical'    => 'https://test.halalghor.com', // Set null for using Url::current(), set false to total remove
+            'canonical'    => null, // Set null for using Url::current(), set false to total remove
             'robots'       => 'all', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
@@ -41,7 +41,7 @@ return [
             'url'         =>  null, // Set null for using Url::current(), set false to total remove
             'type'        => 'Website',
             'site_name'   => 'Halal Ghor',
-            'images'      => ['https://test.halalghor.com/front/images/home.PNG'],
+            'images'      => ['http://halalghor.com/front/images/home.PNG'],
         ],
     ],
     'twitter' => [
@@ -62,7 +62,7 @@ return [
             'description' => 'আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।', // set false to total remove
             'url'         => null, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
-            'images'      => ['https://test.halalghor.com/front/images/home.PNG'],
+            'images'      => ['http://halalghor.com/front/images/home.PNG'],
         ],
     ],
 ];

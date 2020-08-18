@@ -44,7 +44,8 @@
                 <td>{{ $occation->publication_status }}</td>
                 <td>
                 <a href="{{route("admin.occation.edit", ['occation' =>  $occation->id])}}" class="btn-circle btn-primary"><i class="fas fa-plus"></i></a>
-                </td>
+                
+              </td>
             </tr>
           </tbody>
         </table>

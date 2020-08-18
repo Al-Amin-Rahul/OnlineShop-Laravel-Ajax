@@ -3,8 +3,8 @@
 @section('title')Halal Ghor - Halal Perfume, Book, Fashion & Food @endsection
 
 @section('meta')
-    {!! SEOMeta::generate() !!}
-    {!! OpenGraph::generate() !!}
+{!! SEOMeta::generate() !!}
+{!! OpenGraph::generate() !!}
 @endsection
 
 @section('css')
@@ -95,7 +95,14 @@
 
                         <div class="title text-center name-overflow" title="{{ ($product->name) }}">
                             <span>{{ $product->name }}</span></div>
-                        @if($product->category_id == 7 && $product->occational_offer == 1)
+                        @if($product->category_id == 7 && $product->price_25 == 0)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ number_format(($product->price - (($product->price * $product->occational_offer_ratio) / 100)), 2) }}</span>
+                        </div>
+                        <div class="strike text-center">
+                            <strike><small>{{ $product->price }}</small></strike>
+                        </div>
+                        @elseif($product->category_id == 7 && $product->occational_offer == 1)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($product->price_3 - (($product->price_3 * $product->occational_offer_ratio) / 100)), 2) }}
                                 -
@@ -104,18 +111,20 @@
                         <div class="strike text-center">
                             <strike><small>{{ $product->price_3 }} - {{ $product->price_25 }}</small></strike>
                         </div>
-                        @elseif($product->occational_offer == 1)
+                        @else
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($product->price - (($product->price * $product->occational_offer_ratio) / 100)), 2) }}</span>
                         </div>
                         <div class="strike text-center">
                             <strike><small>{{ $product->price }}</small></strike>
                         </div>
-                        @else
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ $product->price }}</span></div>
                         @endif
-                        @if($product->category_id == 3 || $product->category_id == 4 || $product->category_id == 7)
+                        @if($product->category_id == 7 && $product->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($product->category_id == 3 || $product->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                                 class="btn btn-green">Select Size</a>
@@ -253,7 +262,15 @@
 
                         <div class="title text-center name-overflow" title="{{ ($flash_sale->name) }}"><span
                                 class="">{{ $flash_sale->name }}</span></div>
-                        @if($flash_sale->category_id == 7)
+                        @if($flash_sale->category_id == 7 && $flash_sale->price_25 == 0)
+                        <div class="price text-center"><span class="c-green font-weight-bold">
+                                ৳
+                                {{ number_format(($flash_sale->price - (($flash_sale->price * $flash_sale->flash_sale_ratio) / 100)), 2) }}</span>
+                        </div>
+                        <div class="strike text-center">
+                            <strike><small>{{ $flash_sale->price }}</small></strike>
+                        </div>
+                        @elseif($flash_sale->category_id == 7)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($flash_sale->price_3 - (($flash_sale->price_3 * $flash_sale->flash_sale_ratio) / 100)), 2) }}
                                 -
@@ -271,8 +288,12 @@
                             <strike><small>{{ $flash_sale->price }}</small></strike>
                         </div>
                         @endif
-                        @if($flash_sale->category_id == 3 || $flash_sale->category_id == 4 || $flash_sale->category_id
-                        == 7)
+                        @if($flash_sale->category_id == 7 && $flash_sale->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($flash_sale->category_id == 3 || $flash_sale->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
                                 class="btn btn-green">Select Size</a>
@@ -338,7 +359,28 @@
 
                         <div class="title text-center name-overflow" title="{{ ($top_sale->name) }}">
                             <span>{{ $top_sale->name }}</span></div>
-                        @if($top_sale->category_id == 7 && $top_sale->flash_sale == 1)
+                        @if($top_sale->category_id == 7 && $top_sale->price_25 == 0)
+                            @if($top_sale->flash_sale == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->flash_sale_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($top_sale->occational_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->occational_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($top_sale->daily_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->daily_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($top_sale->mela == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->mela_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @else
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ $top_sale->price }}</span></div>
+                            @endif
+                        @elseif($top_sale->category_id == 7 && $top_sale->flash_sale == 1)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($top_sale->price_3 - (($top_sale->price_3 * $top_sale->flash_sale_ratio) / 100)), 2) }}
                                 -
@@ -364,31 +406,36 @@
                         </div>
                         @elseif($top_sale->category_id == 7)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
-                            {{ $top_sale->price_3 }} - {{ $top_sale->price_25 }}
+                                {{ $top_sale->price_3 }} - {{ $top_sale->price_25 }}
                         </div>
                         @else
-                        @if($top_sale->flash_sale == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->flash_sale_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @elseif($top_sale->occational_offer == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->occational_offer_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @elseif($top_sale->daily_offer == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->daily_offer_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @elseif($top_sale->mela == 1)
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->mela_offer_ratio) / 100)), 2) }}</span>
-                        </div>
-                        @else
-                        <div class="price text-center"><span class="c-green font-weight-bold">৳
-                                {{ $top_sale->price }}</span></div>
+                            @if($top_sale->flash_sale == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->flash_sale_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($top_sale->occational_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->occational_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($top_sale->daily_offer == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->daily_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @elseif($top_sale->mela == 1)
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ number_format(($top_sale->price - (($top_sale->price * $top_sale->mela_offer_ratio) / 100)), 2) }}</span>
+                            </div>
+                            @else
+                            <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                    {{ $top_sale->price }}</span></div>
+                            @endif
                         @endif
-                        @endif
-                        @if($top_sale->category_id == 3 || $top_sale->category_id == 4 || $top_sale->category_id == 7)
+                        @if($top_sale->category_id == 7 && $top_sale->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($top_sale->category_id == 3 || $top_sale->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}"
                                 class="btn btn-green">Select Size</a>
@@ -428,7 +475,7 @@
             @php($count = 0)
             @foreach($category->products as $product)
             @php($count++)
-            @if($count == 5)
+            @if($count >= 7)
             @continue
             @else
             <div class="col-lg-2 col-md-3 col-6 pb-2">
@@ -462,7 +509,28 @@
 
                         <div class="title text-center name-overflow" title="{{ ($product->name) }}">
                             <span>{{ $product->name }}</span></div>
-                        @if($product->category_id == 7 && $product->flash_sale == 1)
+                        @if($product->category_id == 7 && $product->price_25 == 0)
+                        @if($product->flash_sale == 1)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ number_format(($product->price - (($product->price * $product->flash_sale_ratio) / 100)), 2) }}</span>
+                        </div>
+                        @elseif($product->occational_offer == 1)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ number_format(($product->price - (($product->price * $product->occational_offer_ratio) / 100)), 2) }}</span>
+                        </div>
+                        @elseif($product->daily_offer == 1)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ number_format(($product->price - (($product->price * $product->daily_offer_ratio) / 100)), 2) }}</span>
+                        </div>
+                        @elseif($product->mela == 1)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ number_format(($product->price - (($product->price * $product->mela_offer_ratio) / 100)), 2) }}</span>
+                        </div>
+                        @else
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳
+                                {{ $product->price }}</span></div>
+                        @endif
+                        @elseif($product->category_id == 7 && $product->flash_sale == 1)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($product->price_3 - (($product->price_3 * $product->flash_sale_ratio) / 100)), 2) }}
                                 -
@@ -488,7 +556,7 @@
                         </div>
                         @elseif($product->category_id == 7)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
-                            {{ $product->price_3 }} - {{ $product->price_25 }}
+                                {{ $product->price_3 }} - {{ $product->price_25 }}
                         </div>
                         @else
                         @if($product->flash_sale == 1)
@@ -513,7 +581,12 @@
                         @endif
                         @endif
 
-                        @if($product->category_id == 3 || $product->category_id == 4 || $product->category_id == 7)
+                        @if($product->category_id == 7 && $product->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($product->category_id == 3 || $product->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                                 class="btn btn-green">Select Size</a>
@@ -560,32 +633,32 @@
 @section('js')
 <script src="{{ asset("/") }}front/js/owl.carousel.min.js"></script>
 <script>
-        var owl = $('.owl-carousel');
-        owl.owlCarousel({
-            loop:true,
-            margin:10,
-            autoplay:true,
-            autoplayTimeout:5000,
-            autoplayHoverPause:true,
-            autoHeight:false,
-            autoHeightClass: 'owl-height',
-            nav:false,
-            dots:false,
-            responsiveClass:true,
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        autoHeight: false,
+        autoHeightClass: 'owl-height',
+        nav: false,
+        dots: false,
+        responsiveClass: true,
 
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                768: {
-                    items: 1,
-                },
-                1000: {
-                    items: 1,
-                    loop: true
-                },
-            }
+        responsive: {
+            0: {
+                items: 1,
+            },
+            768: {
+                items: 1,
+            },
+            1000: {
+                items: 1,
+                loop: true
+            },
+        }
 
-        });
-    </script>
+    });
+</script>
 @endsection

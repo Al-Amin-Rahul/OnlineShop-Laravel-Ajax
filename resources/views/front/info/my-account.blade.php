@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{ $order->product_name }}</td>
                                     <td>{{ $order->product_price }}</td>
-                                    <td>{{$order->order_id}}</td>
+                                    <td>{{ '1000'.$order->order_id}}</td>
                                     <td>{{$order->shipping->order_status}}</td>
                                 </tr>
                             </tbody>

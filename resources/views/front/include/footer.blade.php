@@ -23,7 +23,11 @@
             <div class="col-lg-2 text-md-center text-lg-left text-center">
             <div class="c-green pb-2">MY ACCOUNT</div>
                 <ul class="footer-menu">
-                    <li class="menu-item"><a href="#" data-toggle="modal" data-target="#trackId" class="text-decoration-none">Track Order</a> </li>
+                    @if(Session::get('customer_id'))
+                    <li class="menu-item"><a href="#" class="text-decoration-none" data-toggle="modal" data-target="#trackId">Track Order</a></li>
+                    @else
+                    <li class="menu-item"><a href="{{ route("login") }}" class="text-decoration-none">Track Order</a></li>
+                    @endif
                     <li class="menu-item"><a href="{{ route("my-account") }}" class="text-decoration-none">Account</a></li>
                     <li class="menu-item badge badge-warning"><a href="{{ route("feedback") }}" class="text-decoration-none text-dark">Feedback</a></li>
                 </ul>
@@ -31,7 +35,7 @@
             <div class="col-lg-2 text-md-center text-lg-left text-center">
             <div class="c-green pb-2">CONTACT US</div>
                 <ul class="footer-menu">
-                    <li class="menu-item"><i class="fa fa-map-marker-alt c-green"></i> <span class="c-wheat">98/2 Senpara porbota,Mirpur 1,Dhaka 12016</span></li>
+                    <li class="menu-item"><i class="fa fa-map-marker-alt c-green"></i> <span class="c-wheat">98/2 Senpara porbota,Mirpur 1,Dhaka 1216</span></li>
                     <li class="menu-item"><i class="fa fa-envelope c-green"></i> <span class="c-wheat">halalghor@gmail.com</span></li>
                     <li class="menu-item"><i class="fa fa-mobile c-green"></i> <span class="c-wheat">+880 1947325581, +880 1750521719</span></li>
                 </ul>

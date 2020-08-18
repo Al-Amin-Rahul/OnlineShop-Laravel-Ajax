@@ -45,7 +45,7 @@
                             Perfume Price
                         </div>
                         <div class="form-group row">
-                            <label class="control-label col-sm-3">Price 3.5ml:</label>
+                            <label class="control-label col-sm-3">Price 3ml:</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" name="price_3" value="{{ $product->price_3 }}" id="price3">
                             </div>

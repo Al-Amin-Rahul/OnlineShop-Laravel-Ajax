@@ -82,7 +82,14 @@ HalalGhor - {{ $occational_offer_title->occational_offer_title }}
                             -{{ $occational_offer_product->occational_offer_ratio }}%</div>
                         @endif
 
-                        @if($occational_offer_product->category_id == 7)
+                        @if($occational_offer_product->category_id == 7 && $occational_offer_product->price_25 == 0)
+                        <div class="price text-center"><span class="c-green font-weight-bold">৳ 
+                                {{ number_format(($occational_offer_product->price - (($occational_offer_product->price * $occational_offer_product->occational_offer_ratio) / 100)), 2) }}</span>
+                        </div>
+                        <div class="strike text-center">
+                            <strike><small>{{ $occational_offer_product->price }}</small></strike>
+                        </div>
+                        @elseif($occational_offer_product->category_id == 7)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($occational_offer_product->price_3 - (($occational_offer_product->price_3 * $occational_offer_product->occational_offer_ratio) / 100)), 2) }}
                                 -
@@ -100,7 +107,12 @@ HalalGhor - {{ $occational_offer_title->occational_offer_title }}
                         </div>
                         @endif
                         <!-- cart -->
-                        @if($occational_offer_product->category_id == 3 || $occational_offer_product->category_id == 4 || $occational_offer_product->category_id == 7)
+                        @if($occational_offer_product->category_id == 7 && $occational_offer_product->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $occational_offer_product->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($occational_offer_product->category_id == 3 || $occational_offer_product->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $occational_offer_product->slug])}}"
                                 class="btn btn-green">Select Size</a>

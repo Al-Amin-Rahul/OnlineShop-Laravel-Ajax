@@ -17,7 +17,7 @@ class CartController extends Controller
         else{
 
             // price 
-            if($product->category_id == 7) //Perfume
+            if($product->category_id == 7 && $product->price_25 != 0) //Perfume
             {
                 $price  =   $request->perfume_price_cart;
             }
@@ -44,10 +44,10 @@ class CartController extends Controller
             // end price 
 
             // weight
-            if($product->category_id == 7) //perfume
+            if($product->category_id == 7 && $product->price_25 != 0) //perfume
             {
                 if($request->weight == 'price_3'){
-                    $weight =   3.5;
+                    $weight =   3;
                 }
                 elseif($request->weight == 'price_6'){
                     $weight =   6;
@@ -157,10 +157,10 @@ class CartController extends Controller
         }
         
         // weight
-        if($product->category_id == 7)
+        if($product->category_id == 7 && $product->price_25 != 0)
         {
             if($request->weight == 'price_3'){
-                $weight =   3.5;
+                $weight =   3;
             }
             elseif($request->weight == 'price_6'){
                 $weight =   6;

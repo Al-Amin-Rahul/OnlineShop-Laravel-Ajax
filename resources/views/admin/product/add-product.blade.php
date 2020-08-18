@@ -45,7 +45,7 @@
                             Perfume Price
                         </div>
                         <div class="form-group row">
-                            <label class="control-label col-sm-3">Price 3.5ml:</label>
+                            <label class="control-label col-sm-3">Price 3ml:</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" name="price_3" value="0" id="price3">
                             </div>
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3" for="price">Product Price:</label>
+                        <label class="control-label col-sm-3" for="price">Product Price:( 0 for perfume )</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="price" value="" id="price">
                         </div>

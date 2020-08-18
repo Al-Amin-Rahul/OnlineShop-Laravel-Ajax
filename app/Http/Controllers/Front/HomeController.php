@@ -53,17 +53,17 @@ class HomeController extends Controller
         SEOMeta::addMeta('title', "Halal Ghor - Halal Perfume, Book, Fashion & Food", 'name');
         SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
         SEOMeta::addKeyword(['halalghor', 'halal ghor', 'HalalGhor', 'Halal Ghor', 'halal', 'Online Shopping']);
-        SEOMeta::setCanonical('https://test.halalghor.com');
+        //SEOMeta::setCanonical('https://test.halalghor.com');
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
         OpenGraph::setTitle('Halal Ghor - Halal Perfume, Book, Fashion & Food');
         OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
-        OpenGraph::setUrl('https://test.halalghor.com');
+        OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'website');
-        OpenGraph::addImage('https://test.halalghor.com/front/images/home.PNG');
+        OpenGraph::addImage('http://halalghor.com/front/images/home.PNG');
         OpenGraph::addProperty('site_name', 'Halal Ghor');
         OpenGraph::addProperty('locale', 'en_US');
-        OpenGraph::addProperty('author', 'Sohel Rana');
+        //OpenGraph::addProperty('author', 'Sohel Rana');
 
 
         return view('front.home.home', $data);
@@ -84,10 +84,10 @@ class HomeController extends Controller
         OpenGraph::setDescription($data['product']->description);
         OpenGraph::setTitle($data['product']->name);
         OpenGraph::setUrl(URL::current());
-        OpenGraph::addProperty('type', 'product');
+        OpenGraph::addProperty('type', 'website');
         OpenGraph::addProperty('locale', 'en_US');
         OpenGraph::addProperty('site_name', 'Halal Ghor');
-        OpenGraph::addImage('https://test.halalghor.com/'.$data['product']->image);
+        OpenGraph::addImage('http://halalghor.com/'.$data['product']->image);
  
 
         return view('front.product.product-details', $data);
@@ -108,7 +108,7 @@ class HomeController extends Controller
         OpenGraph::addProperty('type', 'category');
         OpenGraph::addProperty('locale', 'en_US');
         OpenGraph::addProperty('site_name', 'Halal Ghor');
-        OpenGraph::addImage('https://test.halalghor.com/'.$data['category_products'][0]->category_image);
+        OpenGraph::addImage('http://halalghor.com/'.$data['category_products'][0]->category_image);
 
         return view('front.product.product-category', $data);
     }
@@ -120,7 +120,7 @@ class HomeController extends Controller
 
     public function showConfirmation()
     {
-        return view('front.thank-you.thank-you')->with('message', 'আসসালামু আলাইকুম , আপনার অর্ডারটি সম্পন্ন হয়েছে। খুব তারাতাড়ি আপনার সাথে যোগাযোগ করা হবে ইনশাআল্লাহ্‌  !!!');
+        return view('front.thank-you.thank-you')->with('message', 'আলহামদুলিল্লাহ! আপনার অর্ডারটি সম্পন্ন হয়েছে। অনুগ্রহ করে আপনার অর্ডার আইডি সংরক্ষিত রাখুন। ইনশাআল্লাহ দ্রুত আমাদের প্রতিনিধি আপনার সাথে যোগাযোগ করবে ।');
     }
 
     public function showOrder(Request $request)

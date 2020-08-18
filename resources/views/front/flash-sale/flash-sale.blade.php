@@ -78,7 +78,18 @@ HalalGhor - Flash Sale
 
                         <div class="title text-center name-overflow" title="{{ ($flash_sale->name) }}">
                             <span>{{ $flash_sale->name }}</span></div>
-                        @if($flash_sale->category_id == 7)
+                        @if($flash_sale->flash_sale == 1)
+                        <div class="badge badge-danger position-absolute border-radius-99 product-offer-badge">
+                            -{{ $flash_sale->flash_sale_ratio }}%</div>
+                        @endif
+                        @if($flash_sale->category_id == 7 && $flash_sale->price_25 == 0)
+                            <div class="price text-center"><span class="c-green font-weight-bold">
+                                ৳ {{ number_format(($flash_sale->price - (($flash_sale->price * $flash_sale->flash_sale_ratio) / 100)), 2) }}</span>
+                            </div>
+                            <div class="strike text-center">
+                                <strike><small>{{ $flash_sale->price }}</small></strike>
+                            </div>
+                        @elseif($flash_sale->category_id == 7)
                         <div class="price text-center"><span class="c-green font-weight-bold">৳
                                 {{ number_format(($flash_sale->price_3 - (($flash_sale->price_3 * $flash_sale->flash_sale_ratio) / 100)), 2) }}
                                 -
@@ -95,7 +106,12 @@ HalalGhor - Flash Sale
                             <strike><small>{{ $flash_sale->price }}</small></strike>
                         </div>
                         @endif
-                        @if($flash_sale->category_id == 3 || $flash_sale->category_id == 4 || $flash_sale->category_id == 7)
+                        @if($flash_sale->category_id == 7 && $flash_sale->price_25 != 0)
+                        <div class="text-center px-4">
+                            <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
+                                class="btn btn-green">Select Size</a>
+                        </div>
+                        @elseif($flash_sale->category_id == 3 || $flash_sale->category_id == 4)
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
                                 class="btn btn-green">Select Size</a>
