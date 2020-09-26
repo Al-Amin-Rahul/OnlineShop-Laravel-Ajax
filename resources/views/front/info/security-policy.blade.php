@@ -12,7 +12,7 @@
 @section('body')
     <section>
         <div class="container pt-5 pb-5">
-            <div class="alert alert-danger c-blue font-weight-bold">
+            <div class="alert alert-gray c-blue font-weight-bold">
                 Security Policy
             </div>
             <div class="row">

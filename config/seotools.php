@@ -11,7 +11,7 @@ return [
         'defaults'       => [
             'title'        => false, // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।', // set false to total remove
+            'description'  => 'Halal Ghor is an Islamic online shop in Bangladesh. We sell almost all Islamic products. One of our main objectives is to provide organic and fresh products Alhamdulillah. Halal Ghor have a own honey collector team, own various of oil production team and also a packaging team. Halal Ghor support cash on delivery of anywhere in Bangladesh. We are work for premium quality products and ensure lower product cost.', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => ['halalghor', 'halal ghor', 'HalalGhor', 'Halal Ghor', 'halal', 'Online Shopping'],
             'canonical'    => null, // Set null for using Url::current(), set false to total remove
@@ -36,12 +36,12 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Halal Ghor - Halal Perfume, Book, Fashion & Food', // set false to total remove
-            'description' => 'আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।', // set false to total remove
+            'title'       => 'Halal Ghor - An Islamic Online Shop In Bangladesh', // set false to total remove
+            'description' => 'Halal Ghor is an Islamic online shop in Bangladesh. We sell almost all Islamic products. One of our main objectives is to provide organic and fresh products Alhamdulillah. Halal Ghor have a own honey collector team, own various of oil production team and also a packaging team. Halal Ghor support cash on delivery of anywhere in Bangladesh. We are work for premium quality products and ensure lower product cost.', // set false to total remove
             'url'         =>  null, // Set null for using Url::current(), set false to total remove
             'type'        => 'Website',
             'site_name'   => 'Halal Ghor',
-            'images'      => ['http://halalghor.com/front/images/home.PNG'],
+            'images'      => ['https://halalghor.com/front/images/home.PNG'],
         ],
     ],
     'twitter' => [
@@ -58,11 +58,11 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Halal Ghor - Halal Perfume, Book, Fashion & Food', // set false to total remove
-            'description' => 'আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।', // set false to total remove
+            'title'       => 'Halal Ghor - An Islamic Online Shop In Bangladesh', // set false to total remove
+            'description' => 'Halal Ghor is an Islamic online shop in Bangladesh. We sell almost all Islamic products. One of our main objectives is to provide organic and fresh products Alhamdulillah. Halal Ghor have a own honey collector team, own various of oil production team and also a packaging team. Halal Ghor support cash on delivery of anywhere in Bangladesh. We are work for premium quality products and ensure lower product cost.', // set false to total remove
             'url'         => null, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
-            'images'      => ['http://halalghor.com/front/images/home.PNG'],
+            'images'      => ['https://halalghor.com/front/images/home.PNG'],
         ],
     ],
 ];

@@ -125,9 +125,9 @@ HalalGhor - Checkout
                         <div class="card-body">
                             <div class="form-group">
                                 <input type="radio" name="delivery" id="insight" value="50" checked> <label
-                                    for="insight">Insight Dhaka Delivery Charge 50Tk</label> </br>
+                                    for="insight">Inside Dhaka Delivery Charge 50Tk</label> </br>
                                 <input type="radio" name="delivery" id="outsight" value="100"> <label
-                                    for="outsight">Outsight Dhaka Delivery Charge 100Tk</label>
+                                    for="outsight">Outside Dhaka Delivery Charge 100Tk</label>
                             </div>
                         </div>
                     </div>

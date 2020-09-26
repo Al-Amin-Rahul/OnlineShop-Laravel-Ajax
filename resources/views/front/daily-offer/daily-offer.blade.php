@@ -116,7 +116,7 @@ HalalGhor - Today's Offer
                             <a href="{{route("product-details", ['slug'   =>  $daily_offer_product->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
-                        @elseif($daily_offer_product->category_id == 3 || $daily_offer_product->category_id == 4 
+                        @elseif($daily_offer_product->category_id == 3 || $daily_offer_product->category_id == 4 )
                         <div class="text-center px-4">
                             <a href="{{route("product-details", ['slug'   =>  $daily_offer_product->slug])}}"
                                 class="btn btn-green">Select Size</a>

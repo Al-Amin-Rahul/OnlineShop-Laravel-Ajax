@@ -20,6 +20,9 @@ class InfoController extends Controller
     public function contact(){
         return view("front.info.contact-us");
     }
+    public function howToBuy(){
+        return view("front.info.how-to-buy");
+    }
     public function securityPolicy(){
         return view("front.info.security-policy");
     }

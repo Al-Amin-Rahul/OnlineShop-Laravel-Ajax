@@ -173,7 +173,7 @@ HalalGhor - {{$product->name}}
                         </div>
                         <div class="row">
                             <div class="socila-share col-lg-12">
-                                <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftest.halalghor.com%2Fproduct-details%2F{{$product->slug}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fhalalghor.com%2Fproduct-details%2F{{$product->slug}}&layout=button&size=large&width=77&height=28&appId" width="77" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                             </div>
                         </div>
                         <div class="row">
@@ -227,8 +227,7 @@ HalalGhor - {{$product->name}}
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="wrap px-4 p-3">
-                                <span> <i class="fas fa-phone"></i> Call Us For Order : +880 1947325581, +880
-                                    1750521719</span></br>
+                                <span> <i class="fas fa-phone"></i> Call Us For Order : 01947-325581, 01750-521719</span></br>
                                 <span> <i class="fas fa-envelope"></i> Email : halalghor@gmail.com</span>
                             </div>
                         </div>

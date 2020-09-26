@@ -17,16 +17,16 @@ class SearchController extends Controller
         return view('front.search.search', $data);
     }
 
-    function Products(Request $request)
-    {
-        $products = Product::where("name", "LIKE", "%".$request->search_field."%")->orderBy("name", "ASC")->get();
-        if (count($products)) {
-            foreach ($products as $product) {
-                $availableProducts[] = $product->name;
-            }
-        } else {
-            $availableProducts[] = "Not Found";
-        }
-        return $availableProducts;
-    }
+    // function Products(Request $request)
+    // {
+    //     $products = Product::where("name", "LIKE", "%".$request->search_field."%")->orderBy("name", "ASC")->get();
+    //     if (count($products)) {
+    //         foreach ($products as $product) {
+    //             $availableProducts[] = $product->name;
+    //         }
+    //     } else {
+    //         $availableProducts[] = "Not Found";
+    //     }
+    //     return $availableProducts;
+    // }
 }

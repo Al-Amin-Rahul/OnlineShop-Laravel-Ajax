@@ -45,7 +45,7 @@ Route::namespace('Front')->group(function(){
     Route::post('track-order', 'HomeController@showOrder')->name('track-order');
 
     Route::post('search/products', 'SearchController@searchProducts')->name('search/products');
-    Route::post('productList', 'SearchController@Products')->name('productList');
+    // Route::get('productList/{key}', 'SearchController@Products')->name('productList');
 
     Route::post('comment/store', 'CommentController@store')->name('comment.store');
     Route::get('show-comment/{id}', 'CommentController@show')->name('show-comment');
@@ -53,6 +53,7 @@ Route::namespace('Front')->group(function(){
     // info
     Route::get('about-us', 'InfoController@about')->name('about-us');
     Route::get('contact-us', 'InfoController@contact')->name('contact-us');
+    Route::get('how-to-buy', 'InfoController@howToBuy')->name('how-to-buy');
     Route::get('security-policy', 'InfoController@securityPolicy')->name('security-policy');
     Route::get('shipping-and-replacement', 'InfoController@shippingAndReplacement')->name('shipping-and-replacement');
     Route::get('privacy-policy', 'InfoController@privacyPolicy')->name('privacy-policy');

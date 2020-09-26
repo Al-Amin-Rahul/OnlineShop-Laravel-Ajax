@@ -1,6 +1,6 @@
 @extends('front.master')
 
-@section('title')Halal Ghor - Halal Perfume, Book, Fashion & Food @endsection
+@section('title')Halal Ghor - An Islamic Online Shop In Bangladesh @endsection
 
 @section('meta')
 {!! SEOMeta::generate() !!}

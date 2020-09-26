@@ -40,7 +40,6 @@
                                 <ul class="m-0 float-left" style="list-style: none; margin:0; padding: 0">
                                     <li><i class="fab fa-facebook-square"></i> <a class="text-primary" href="https://www.facebook.com/mahbubul161" target="_blank">Facebook</a></li>
                                     <li><i class="fas fa-mobile"></i> 01620600428 </li>
-                                    <li><i class="fas fa-mobile"></i> 01779724298 </li>
                                 </ul>
                             </div>
                         </div>

@@ -1,7 +1,6 @@
 <!-- show cart -->
 <a id="showCartOpenBtn">
-    <!-- <section class="cart-view bg-pink shadow rounded" id="main" style="margin-right:{{ $btnClass }}"> -->
-    <section class="cart-view bg-pink shadow rounded" id="main">
+    <section class="cart-view bg-pink shadow rounded {{ $btnClass }}" id="main">
         <div class="icon text-center">
         <span><i class="fas fa-shopping-bag fa-2x text-dark"></i></span> <br>
             <!-- <span><img src="{{ asset("/") }}front/images/bag32.png" alt=""></span>
@@ -11,8 +10,8 @@
     </section>
 </a>
 <!-- cart area hidden -->
-<!-- <div id="cartArea" class="cartbar {{ $viewClass }}"> -->
-<div id="cartArea" class="cartbar">
+<div id="cartArea" class="cartbar {{ $viewClass }}">
+<!-- <div id="cartArea" class="cartbar"> -->
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="container-fluid">
         @if(Cart::count() != 0)
@@ -93,7 +92,8 @@
 
     <script>
         var showCartOpenBtn     =   $('#showCartOpenBtn');
-        var cart     =   $('#cartArea');
+        var mainBtn             =   $('#main');
+        var cart                =   $('#cartArea');
 
         showCartOpenBtn.on('click', function(e) {
             e.preventDefault();
@@ -116,6 +116,7 @@
         function closeNav() {
             document.getElementById("cartArea").style.width = "0";
             document.getElementById("main").style.marginRight = "0";
-            // cart.removeClass('w-40');
+            cart.removeClass('cartaria-width');
+            mainBtn.removeClass('cartbtn-width');
         }
     </script>

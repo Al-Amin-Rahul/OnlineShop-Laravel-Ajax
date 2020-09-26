@@ -121,13 +121,12 @@ class CartController extends Controller
         $count          =   Cart::count();
         $totalPrice     =   Cart::priceTotal();
 
-
         return view('front.cart.show-cart', [
             'cartItems'     =>  $cartItems,
             'count'         =>  $count,
             'totalPrice'    =>  $totalPrice,
-            'viewClass'     =>  "w-50",
-            'btnClass'      =>  "50%",
+            'viewClass'     =>  "cartaria-width",
+            'btnClass'      =>  "cartbtn-width",
         ]);
     }
 

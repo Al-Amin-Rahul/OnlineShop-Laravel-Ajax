@@ -57,6 +57,21 @@ $(document).on("submit", "#updateCart", function(e){
         method: method,
         data: data,
         success: data => {
+            // const Toast = Swal.mixin({
+            //     toast: true,
+            //     position: 'top-start',
+            //     showConfirmButton: false,
+            //     timer: 3000,
+            //     timerProgressBar: true,
+            //     onOpen: (toast) => {
+            //         toast.addEventListener('mouseenter', Swal.stopTimer);
+            //         toast.addEventListener('mouseenter', Swal.resumeTimer);
+            //     }
+            // });
+            // Toast.fire({
+            //     icon: 'success',
+            //     title: 'Cart Updated Successfully'
+            // }); 
             return getCartItems();
         }
     });

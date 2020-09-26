@@ -12,7 +12,7 @@
 @section('body')
     <section>
         <div class="container pt-5 pb-5">
-            <div class="alert alert-danger c-blue font-weight-bold">
+            <div class="alert alert-gray c-blue font-weight-bold">
                 Contact Us
             </div>
             <div class="row">
@@ -25,9 +25,9 @@
                     <div class="shadow bg-white border-radius-99 border-left border-dark text-center">
                         <div class="p-5">
                             www.halaghor.com <br>
-                            98/2 Senpara Porbota <br>
-                            Opposite site of DBBL Bank/ATM <br>
-                            Mirpur 1,Dhaka
+                            39/3 Shenpara, Parbata <br>
+                            Mirpur-10,Dhaka 1216 <br>
+                            Bangladesh
                         </div>
                     </div>
                 </div>

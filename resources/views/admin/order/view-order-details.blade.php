@@ -31,6 +31,10 @@
                             <th>Phone Number</th>
                             <td>{{ $shipping->phone }}</td>
                         </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ $shipping->email }}</td>
+                        </tr>
 
                         <tr>
                             <th>Address</th>
@@ -148,7 +152,7 @@
                             <th></th>
                             <th></th>
                             <th>Total (BDT)</th>
-                            <th>TK. {{$grandTotal   =   20 + $shipping->delivery + Session::get('totalPrice')}}</th>
+                            <th>TK. {{$grandTotal   =   $shipping->delivery + Session::get('totalPrice')}}</th>
                         </tr>
                         @else
                         <tr>

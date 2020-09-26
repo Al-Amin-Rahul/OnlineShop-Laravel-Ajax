@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\URL;
 
 class HomeController extends Controller
 {
+    public $description    =   'Halal Ghor is an Islamic online shop in Bangladesh. We sell almost all Islamic products. One of our main objectives is to provide organic and fresh products Alhamdulillah. Halal Ghor have a own honey collector team, own various of oil production team and also a packaging team. Halal Ghor support cash on delivery of anywhere in Bangladesh. We are work for premium quality products and ensure lower product cost.';
+    public $metaTitle      =   'Halal Ghor - An Islamic Online Shop In Bangladesh';
     /**
      * Create a new controller instance.
      *
@@ -50,17 +52,17 @@ class HomeController extends Controller
         $data['daily_offer_title']           =   DailyOffer::where('publication_status', 1)->first();
         $data['mela']                        =   Mela::where('publication_status', 1)->first();
 
-        SEOMeta::addMeta('title', "Halal Ghor - Halal Perfume, Book, Fashion & Food", 'name');
-        SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        SEOMeta::addMeta('title', $this->metaTitle, 'name');
+        SEOMeta::setDescription($this->description);
         SEOMeta::addKeyword(['halalghor', 'halal ghor', 'HalalGhor', 'Halal Ghor', 'halal', 'Online Shopping']);
-        //SEOMeta::setCanonical('https://test.halalghor.com');
+        SEOMeta::setCanonical(URL::current());
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
-        OpenGraph::setTitle('Halal Ghor - Halal Perfume, Book, Fashion & Food');
-        OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        OpenGraph::setTitle($this->metaTitle);
+        OpenGraph::setDescription($this->description);
         OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'website');
-        OpenGraph::addImage('http://halalghor.com/front/images/home.PNG');
+        OpenGraph::addImage('https://halalghor.com/front/images/home.PNG');
         OpenGraph::addProperty('site_name', 'Halal Ghor');
         OpenGraph::addProperty('locale', 'en_US');
         //OpenGraph::addProperty('author', 'Sohel Rana');
@@ -87,7 +89,7 @@ class HomeController extends Controller
         OpenGraph::addProperty('type', 'website');
         OpenGraph::addProperty('locale', 'en_US');
         OpenGraph::addProperty('site_name', 'Halal Ghor');
-        OpenGraph::addImage('http://halalghor.com/'.$data['product']->image);
+        OpenGraph::addImage('https://halalghor.com/'.$data['product']->image);
  
 
         return view('front.product.product-details', $data);
@@ -98,17 +100,17 @@ class HomeController extends Controller
         $data['category_products']   =   Category::with('products')->where('publication_status', 1)->where('slug', $slug)->get();
         
         SEOMeta::addMeta('title', $data['category_products'][0]->category_name);
-        SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        SEOMeta::setDescription($this->description);
         SEOMeta::addKeyword(['Honey', 'Perfume', 'Grocery', 'Islamic Product', 'Islamic Book', 'Online Shopping']);
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
-        OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        OpenGraph::setDescription($this->description);
         OpenGraph::setTitle($data['category_products'][0]->category_name);
         OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'category');
         OpenGraph::addProperty('locale', 'en_US');
         OpenGraph::addProperty('site_name', 'Halal Ghor');
-        OpenGraph::addImage('http://halalghor.com/'.$data['category_products'][0]->category_image);
+        OpenGraph::addImage('https://halalghor.com/'.$data['category_products'][0]->category_image);
 
         return view('front.product.product-category', $data);
     }
@@ -144,11 +146,11 @@ class HomeController extends Controller
         $data['flash_sales']    =   Product::where('flash_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->get();
         
         SEOMeta::addMeta('title', 'HalalGhor - Flash Sale');
-        SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        SEOMeta::setDescription($this->description);
         SEOMeta::addKeyword(['Honey', 'Perfume', 'Grocery', 'Islamic Product', 'Islamic Book', 'Online Shopping']);
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
-        OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        OpenGraph::setDescription($this->description);
         OpenGraph::setTitle('HalalGhor - Flash Sale');
         OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'category');
@@ -164,11 +166,11 @@ class HomeController extends Controller
         $data['top_sales']      =   Product::where('top_sale', 1)->where('publication_status', 1)->orderBy("id", "desc")->get();
         
         SEOMeta::addMeta('title', 'HalalGhor - Top Sale');
-        SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        SEOMeta::setDescription($this->description);
         SEOMeta::addKeyword(['Honey', 'Perfume', 'Grocery', 'Islamic Product', 'Islamic Book', 'Online Shopping']);
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
-        OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        OpenGraph::setDescription($this->description);
         OpenGraph::setTitle('HalalGhor - Top Sale');
         OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'category');
@@ -184,11 +186,11 @@ class HomeController extends Controller
         $data['sliders']                     =   Slider::where('publication_status',1)->where('location', 'category')->get();
         
         SEOMeta::addMeta('title', 'HalalGhor - Daily Offer');
-        SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        SEOMeta::setDescription($this->description);
         SEOMeta::addKeyword(['Honey', 'Perfume', 'Grocery', 'Islamic Product', 'Islamic Book', 'Online Shopping']);
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
-        OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        OpenGraph::setDescription($this->description);
         OpenGraph::setTitle('HalalGhor - Daily Offer');
         OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'category');
@@ -204,11 +206,11 @@ class HomeController extends Controller
         $data['sliders']                     =   Slider::where('publication_status',1)->where('location', 'category')->get();
         
         SEOMeta::addMeta('title', 'HalalGhor - Mela');
-        SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        SEOMeta::setDescription($this->description);
         SEOMeta::addKeyword(['Honey', 'Perfume', 'Grocery', 'Islamic Product', 'Islamic Book', 'Online Shopping']);
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
-        OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        OpenGraph::setDescription($this->description);
         OpenGraph::setTitle('HalalGhor - Mela');
         OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'category');
@@ -225,11 +227,11 @@ class HomeController extends Controller
         $data['sliders']                          =   Slider::where('publication_status',1)->where('location', 'category')->get();
         
         SEOMeta::addMeta('title', 'Halal Ghor - '.$data['occational_offer_title']->occational_offer_title );
-        SEOMeta::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        SEOMeta::setDescription($this->description);
         SEOMeta::addKeyword(['Honey', 'Perfume', 'Grocery', 'Islamic Product', 'Islamic Book', 'Online Shopping']);
 
         OpenGraph::addProperty('fb:app_id', '345891736236545');
-        OpenGraph::setDescription('আসসালামুআলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু। halalghor.com হালাল ঘর ডট কম একটি ইকমার্স সাইট, যেখানে ইসলামিক প্রায় সকল ধরনের হালাল পণ্য সামগ্রী বিক্রয় করা হয়। যেমনঃ হালাল ফুড, হালাল পারফিউম, ইসলামিক বই এছাড়াও একটি পরিবারের জন্য প্রয়োজনীয় হালাল পণ্যসামগ্রী যেমনঃ মুসলিম ছেলেদের ফ্যাশান, মুসলিম বোনদের ফ্যাশান, গৃহসজ্জা, গ্যাজেট ইত্যাদি অতন্ত্য স্বল্প মূল্যে বিক্রয় করা হয়।');
+        OpenGraph::setDescription($this->description);
         OpenGraph::setTitle($data['occational_offer_title']->occational_offer_title );
         OpenGraph::setUrl(URL::current());
         OpenGraph::addProperty('type', 'category');
@@ -333,6 +335,6 @@ class HomeController extends Controller
         else{
             $price  =   0;
         }
-        return response()->json((Int)$price);
+        return response()->json((Double)$price);
     }
 }

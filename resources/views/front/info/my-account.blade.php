@@ -42,15 +42,15 @@
                     <div class="alert alert-gray c-blue font-weight-bold">
                         Contact Info
                     </div>
-                    <div class="shadow bg-green border-radius-99 border-left border-dark text-center mb-5">
+                    <div class="shadow border-radius-99 border-left border-dark text-center mb-5">
                         <div class="p-5">
                             www.halaghor.com <br>
-                            98/2 Senpara Porbota <br>
-                            Opposite site of DBBL Bank/ATM <br>
-                            Mirpur 1,Dhaka
+                            39/3 Shenpara, Parbata <br>
+                            Mirpur-10,Dhaka 1216 <br>
+                            Bangladesh
                         </div>
                     </div>
-                    <div class="shadow bg-green border-radius-99 border-right border-dark text-center">
+                    <div class="shadow border-radius-99 border-right border-dark text-center">
                         <div class="p-5">
                             <i class="fas fa-mobile"></i> +8801947325581  <br>
                             <i class="fas fa-envelope"></i> halalghor@gmail.com <br>

@@ -6,6 +6,7 @@
                 <ul class="footer-menu">
                     <li class="menu-item"><a href="{{ route("about-us") }}" class="text-decoration-none">About Us</a> </li>
                     <li class="menu-item"><a href="{{ route("contact-us") }}" class="text-decoration-none">Contact Us</a></li>
+                    <li class="menu-item badge badge-danger"><a href="{{ route("how-to-buy") }}" class="text-decoration-none">How To Buy</a></li>
                     <li class="menu-item"><a href="https://www.facebook.com/halalghor" target="_blank" class="text-decoration-none">Facebook</a></li>
                     <li class="menu-item"><a href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/" target="_blank" class="text-decoration-none">Youtube</a></li>
                     <li class="menu-item badge badge-primary"><a href="https://www.blog.halalghor.com" target="_blank" class="text-decoration-none">Blog</a></li>
@@ -35,9 +36,10 @@
             <div class="col-lg-2 text-md-center text-lg-left text-center">
             <div class="c-green pb-2">CONTACT US</div>
                 <ul class="footer-menu">
-                    <li class="menu-item"><i class="fa fa-map-marker-alt c-green"></i> <span class="c-wheat">98/2 Senpara porbota,Mirpur 1,Dhaka 1216</span></li>
+                    <li class="menu-item"><i class="fa fa-map-marker-alt c-green"></i> <span class="c-wheat">39/3 Shenpara, Parbata,Mirpur-10,Dhaka 1216</span></li>
                     <li class="menu-item"><i class="fa fa-envelope c-green"></i> <span class="c-wheat">halalghor@gmail.com</span></li>
-                    <li class="menu-item"><i class="fa fa-mobile c-green"></i> <span class="c-wheat">+880 1947325581, +880 1750521719</span></li>
+                    <li class="menu-item"><i class="fa fa-mobile c-green"></i> <span class="c-wheat">01947-325581</span></li>
+                    <li class="menu-item"><i class="fa fa-mobile c-green"></i> <span class="c-wheat">01750-521719</span></li>
                 </ul>
             </div>
             <div class="col-lg-4">
