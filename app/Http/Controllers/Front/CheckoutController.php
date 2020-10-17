@@ -145,7 +145,7 @@ class CheckoutController extends Controller
                 if($checkUsed=="0")
                 {
                     $dis        =   $check[0]->discount;
-                    $newTotal   =   Cart::priceTotal() - ( Cart::priceTotal() * $check[0]->discount / 100 );
+                    $newTotal   =   number_format((Cart::priceTotal() - ((Cart::priceTotal() * $check[0]->discount) / 100)), 2);
                     
                     return ([
                         'alert'      =>  'Applied',

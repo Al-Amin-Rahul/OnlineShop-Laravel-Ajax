@@ -12,17 +12,17 @@ $(function(){
             data: data,
             beforeSend: function()
             {
-                $('#loader').show();
+                $('#moonLoader').removeClass('d-none');
             },
             success: data => {
-                $('#loader').hide();
+                $('#moonLoader').addClass('d-none');
                 $("#dis").text(data.dis);
-                if(subVal < granVal)
+                if(parseFloat(subVal) < parseFloat(granVal))
                 {
                     $("#GrandTotal").text(parseFloat(data.newTotal) + parseFloat(20));
                     $("#newOrderTotal").val(parseFloat(data.newTotal) + parseFloat(20));
                 }
-                else if(wVal == 20)
+                else if(parseFloat(wVal) == 20)
                 {
                     $("#GrandTotal").text(parseFloat(data.newTotal) + parseFloat(20));
                     $("#newOrderTotal").val(parseFloat(data.newTotal) + parseFloat(20));

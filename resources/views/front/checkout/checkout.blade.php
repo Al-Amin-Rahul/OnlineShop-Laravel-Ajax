@@ -70,12 +70,11 @@ HalalGhor - Checkout
                             @csrf
                             <div class="input-group">
                                 <input type="text" class="form-control border-green c-green" name="code"
-                                    placeholder="Aply Cupon" id="" required>
+                                    placeholder="Aply Cupon" required>
                                 <div class="input-group-append">
                                     <button class="btn bg-green text-white" type="submit"> Apply </button>
                                 </div>
                             </div>
-                            <div class="spinner-border loader text-primary" id="loader"></div>
                             <div class="px-3 alert-warning" id="alert"></div>
                         </form>
                     </div>
