@@ -1,7 +1,7 @@
 @extends('front.master')
 
 @section('title')
-HalalGhor - {{$category_products[0]->category_name}}
+HalalGhor - {{$category->category_name}}
 @endsection
 
 @section('meta')
@@ -39,12 +39,11 @@ HalalGhor - {{$category_products[0]->category_name}}
 </section>
 <section class="category-product pt-5 pb-5">
     <div class="container">
-        @foreach( $category_products as $category )
         <div class="alert alert-gray c-blue font-weight-bold">
             {{ $category->category_name }}
         </div>
         <div class="row">
-            @foreach($category->products as $product)
+            @foreach($products as $product)
             <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
                     <a href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
@@ -148,7 +147,9 @@ HalalGhor - {{$category_products[0]->category_name}}
             </div>
             @endforeach
         </div>
-        @endforeach
+        <div class="pagination-wrap pt-5">
+            {{ $products->links() }}
+        </div>
     </div>
 </section>
 @endsection

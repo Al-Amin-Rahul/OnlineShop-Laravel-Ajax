@@ -27,27 +27,19 @@
         <div class="row">
             <div class="col-lg-3 col-md-4">
                 <div class="logo">
-                    <a class="text-decoration-none" href="/">
+                    <a class="text-decoration-none" href="/" aria-label="Logo">
                         <img src="{{ asset("/") }}front/images/weblogo.png"  class="img-fluid shadow-sm" alt=""/>
                     </a>
                 </div>
             </div>
             <div class="col-lg-7 col-md-8">
-                <form action="{{ route("search/products") }}" method="post" class="search-form py-3" id="searchProduct">
-                    @csrf
-                    <div class="input-group">
-                        <input type="text" class="form-control border-green c-green" name="search_field" placeholder="Search In HalalGhor" id="searchField">
-                        <div class="input-group-append">
-                            <button class="btn bg-green text-white" type="submit"> <i class="fas fa-search"></i> </button>
-                        </div>
-                    </div>
-                </form>
+                <livewire:search-product />
             </div>
             <div class="col-lg-2 social d-lg-block d-md-none">
                 <ul class="nav py-3 justify-content-between">
-                    <li class="nav-link pl-0"><a href="https://www.facebook.com/halalghor"><i class="fab fa-facebook c-blue"></i></a></li>
-                    <li class="nav-link"><a href="https://www.twitter.com/halalghor"><i class="fab fa-twitter c-blue"></i></a></li>
-                    <li class="nav-link pr-0"><a href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/"><i class="fab fa-youtube c-blue"></i></a></li>
+                    <li class="nav-link pl-0"><a aria-label="Link" href="https://www.facebook.com/halalghor"><i class="fab fa-facebook c-blue"></i></a></li>
+                    <li class="nav-link"><a aria-label="Link" href="https://www.twitter.com/halalghor"><i class="fab fa-twitter c-blue"></i></a></li>
+                    <li class="nav-link pr-0"><a aria-label="Link" href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/"><i class="fab fa-youtube c-blue"></i></a></li>
                 </ul>
             </div>
         </div>

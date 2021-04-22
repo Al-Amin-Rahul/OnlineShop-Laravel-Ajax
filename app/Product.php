@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facedes\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use App\Category;
 use App\Comment;
@@ -115,7 +115,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category::class);
     }
     public function comments()
     {

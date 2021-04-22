@@ -136,6 +136,9 @@ HalalGhor - Today's Offer
             </div>
             @endforeach
         </div>
+        <div class="pagination-wrap pt-5">
+            {{ $daily_offer_products->links() }}
+        </div>
     </div>
 </section>
 @endsection

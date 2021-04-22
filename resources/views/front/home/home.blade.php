@@ -1,6 +1,6 @@
 @extends('front.master')
 
-@section('title')Halal Ghor - An Islamic Online Shop In Bangladesh @endsection
+@section('title')Halal Ghor - Islamic Online Shop In Bangladesh @endsection
 
 @section('meta')
 {!! SEOMeta::generate() !!}
@@ -8,7 +8,7 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{ asset("/") }}front/css/owl.carousel.min.css">
+<link rel="stylesheet" href="{{ asset('front/css/owl.carousel.min.css') }}">
 @endsection
 
 @section('body')
@@ -25,7 +25,7 @@
                     <div class="carousel-inner" id="carousel-inner">
                         @foreach($sliders as $slider)
                         <div class="carousel-item {{$slider->active}}">
-                            <img src="{{asset($slider->slider_image)}}" class="d-block w-100" alt="..." height="400px">
+                            <img data-original="{{asset($slider->slider_image)}}" class="d-block w-100" alt="..." height="400px">
                         </div>
                         @endforeach
                     </div>
@@ -34,11 +34,11 @@
                     <div class="category-overlay position-absolute shadow rounded">
                         <ul class="menu-overlay">
                             @foreach($categories as $category)
-                            <a class="c-blue" href="{{route("product-category", ['slug'  =>  $category->slug])}}">
+                            <a aria-label="Link" class="c-blue" href="{{route("product-category", ['slug'  =>  $category->slug])}}">
                                 <li><i class="fas fa-shopping-cart c-green"></i> {{$category->category_name}}</li>
                             </a>
                             @endforeach
-                            <a class="c-blue" href="{{route("all-categories")}}">
+                            <a aria-label="Link" class="c-blue" href="{{route("all-categories")}}">
                                 <li><i class="fas fa-caret-square-right c-green"></i> All Categories</li>
                             </a>
                         </ul>
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-lg-6 col-6 font-weight-bold">{{$occational_offer_title->occational_offer_title}} <i
                         class="fas fa-bomb c-green"></i></div>
-                <div class="col-lg-6 col-6 text-right font-weight-bold"><a href="{{ route("occational-offer") }}"
+                <div class="col-lg-6 col-6 text-right font-weight-bold"><a aria-label="Link" href="{{ route("occational-offer") }}"
                         class="c-blue">More <i class="fas fa-angle-right"></i></a></div>
             </div>
         </div>
@@ -63,8 +63,8 @@
             @foreach($occational_offer_products as $product)
             <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
-                    <a href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
-                        <div class="banner img-hover-zoom"><img src="{{asset($product->image)}}" class="" alt=""
+                    <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
+                        <div class="banner img-hover-zoom"><img data-original="{{asset($product->image)}}" class="" alt=""
                                 width="100%"></div>
                         @if($product->occational_offer == 1)
                         <div class="badge badge-danger position-absolute border-radius-99 product-offer-badge">
@@ -121,12 +121,12 @@
                         @endif
                         @if($product->category_id == 7 && $product->price_25 != 0)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @elseif($product->category_id == 3 || $product->category_id == 4)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @else
@@ -151,14 +151,14 @@
     <div class="container">
         <div class="row">
             @foreach($top_categories as $category)
-            <div class="col-lg-4 col-md-4 pb-5">
+            <div class="col-lg-4 col-md-4 col-4 pb-5">
                 <div class="">
-                    <a href="{{route("product-category", ['slug'  =>  $category->slug])}}" class="text-decoration-none">
+                    <a aria-label="Link" href="{{route("product-category", ['slug'  =>  $category->slug])}}" class="text-decoration-none">
                         <div class="cat-img">
-                            <img src="{{asset($category->category_image)}}" class="shadow border-radius-99" width="100%"
+                            <img data-original="{{asset($category->category_image)}}" class="shadow border-radius-99" width="100%"
                                 alt="">
                         </div>
-                        <div class="shadow font-weight-bold c-blue text-center pt-2 pb-2">
+                        <div class="shadow font-weight-bold c-blue text-center pt-2 pb-2 name-overflow">
                             {{$category->category_name}} <i class="fas fa-angle-right"></i>
                         </div>
                     </a>
@@ -174,10 +174,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <a href="{{ route("mela") }}" class="text-decoration-none" title="Click">
+                <a aria-label="Link" href="{{ route("mela") }}" class="text-decoration-none" title="Click">
                     <div class="wrap shadow rounded bg-green">
                         <div class="row">
-                            <div class="col-lg-12"><img src="{{asset($mela->image)}}" class="img-fluid" alt=""></div>
+                            <div class="col-lg-12"><img data-original="{{asset($mela->image)}}" class="img-fluid" alt=""></div>
                         </div>
                     </div>
                 </a>
@@ -191,11 +191,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <a href="{{ route("todays-offer") }}" class="text-decoration-none" title="Click">
+                <a aria-label="Link" href="{{ route("todays-offer") }}" class="text-decoration-none" title="Click">
                     <div class="wrap shadow rounded daily-offer">
                         <div class="row">
                             <div class="col-lg-3 col-3 img1">
-                                <img src="{{asset('/')}}front/images/offer.png" alt="" class="promo-img img-fluid">
+                                <img data-original="{{asset('/')}}front/images/offer.png" alt="" class="promo-img img-fluid">
                             </div>
                             <div class="col-lg-6 col-6 title">
                                 <div class=" heading-3 p-3 text-dark font-weight-bolder">
@@ -203,7 +203,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-3">
-                                <img src="{{asset('/')}}front/images/shop.png" alt="" class="promo-img img-fluid">
+                                <img data-original="{{asset('/')}}front/images/shop.png" alt="" class="promo-img img-fluid">
                             </div>
                         </div>
                     </div>
@@ -219,7 +219,7 @@
             <div class="row">
                 <div class="col-lg-6 col-6 font-weight-bold">Flash Sale <i class="fas fa-clock c-green"></i></div>
                 <!-- <span id="demo" class="bg-warning rounded p-3"></span> -->
-                <div class="col-lg-6 col-6 text-right font-weight-bold"><a href="{{route("flash-sale")}}"
+                <div class="col-lg-6 col-6 text-right font-weight-bold"><a aria-label="Link" href="{{route("flash-sale")}}"
                         class="c-blue">More <i class="fas fa-angle-right"></i></a></div>
             </div>
         </div>
@@ -227,9 +227,9 @@
             @foreach($flash_sales as $flash_sale)
             <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
-                    <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
+                    <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
                         class="text-decoration-none">
-                        <div class="banner img-hover-zoom"><img src="{{asset($flash_sale->image)}}" class="" alt=""
+                        <div class="banner img-hover-zoom"><img data-original="{{asset($flash_sale->image)}}" class="" alt=""
                                 width="100%"></div>
                         @if($flash_sale->flash_sale == 1)
                         <div class="badge badge-danger position-absolute border-radius-99 product-offer-badge">
@@ -290,12 +290,12 @@
                         @endif
                         @if($flash_sale->category_id == 7 && $flash_sale->price_25 != 0)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @elseif($flash_sale->category_id == 3 || $flash_sale->category_id == 4)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $flash_sale->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @else
@@ -321,16 +321,17 @@
         <div class="alert alert-gray c-blue">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-6 font-weight-bold">Top Sale <i class="fas fa-fire c-green"></i></div>
-                <div class="col-lg-6 col-md-6 col-6 text-right font-weight-bold"><a href="{{route("top-sale")}}"
-                        class="c-blue">More <i class="fas fa-angle-right"></i></a></div>
+                <div class="col-lg-6 col-md-6 col-6 text-right font-weight-bold"><a aria-label="Link" href="{{route("top-sale")}}"
+                        class="c-blue">More <i class="fas fa-angle-right"></i></a>
+                        </div>
             </div>
         </div>
         <div class="row">
             @foreach($top_sales as $top_sale)
             <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
-                    <a href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}" class="text-decoration-none">
-                        <div class="banner img-hover-zoom"><img src="{{asset($top_sale->image)}}" class="" alt=""
+                    <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}" class="text-decoration-none">
+                        <div class="banner img-hover-zoom"><img data-original="{{asset($top_sale->image)}}" class="" alt=""
                                 width="100%"></div>
 
                         <!-- review -->
@@ -432,12 +433,12 @@
                         @endif
                         @if($top_sale->category_id == 7 && $top_sale->price_25 != 0)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @elseif($top_sale->category_id == 3 || $top_sale->category_id == 4)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $top_sale->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @else
@@ -466,22 +467,18 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-8 font-weight-bold">{{ $category->category_name }} <i
                         class="fas fa-bolt c-green"></i></div>
-                <div class="col-lg-6 col-md-6 col-4 text-right font-weight-bold"><a
+                <div class="col-lg-6 col-md-6 col-4 text-right font-weight-bold"><a aria-label="Link"
                         href="{{ route("product-category", ['slug'   =>  $category->slug]) }}" class="c-blue">More <i
                             class="fas fa-angle-right"></i></a></div>
             </div>
         </div>
         <div class="row">
-            @php($count = 0)
             @foreach($category->products as $product)
-            @php($count++)
-            @if($count >= 7)
-            @continue
-            @else
+            @break($loop->index >= 6)
             <div class="col-lg-2 col-md-3 col-6 pb-2">
                 <div class="wrap hover product">
-                    <a href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
-                        <div class="banner img-hover-zoom"><img src="{{asset($product->image)}}" class="" alt=""
+                    <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $product->slug])}}" class="text-decoration-none">
+                        <div class="banner img-hover-zoom"><img data-original="{{asset($product->image)}}" class="" alt=""
                                 width="100%"></div>
 
                         <!-- review -->
@@ -583,12 +580,12 @@
 
                         @if($product->category_id == 7 && $product->price_25 != 0)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @elseif($product->category_id == 3 || $product->category_id == 4)
                         <div class="text-center px-4">
-                            <a href="{{route("product-details", ['slug'   =>  $product->slug])}}"
+                            <a aria-label="Link" href="{{route("product-details", ['slug'   =>  $product->slug])}}"
                                 class="btn btn-green">Select Size</a>
                         </div>
                         @else
@@ -604,7 +601,6 @@
                     </a>
                 </div>
             </div>
-            @endif
             @endforeach
         </div>
     </div>
@@ -618,7 +614,7 @@
                 @foreach($feedbacks as $feedback)
                 <div class="item shadow border-radius-99 bg-white">
                     <div class="p-5">
-                        <div class="image text-center"><img src="{{asset($feedback->image)}}" alt="Client"></div>
+                        <div class="image text-center"><img data-original="{{asset($feedback->image)}}" alt="Client"></div>
                         <div class="name text-center font-weight-bold text-primary h4">{{ $feedback->name }}</div>
                         <div class="title text-center font-weight-bold">{{ $feedback->work }}</div>
                         <div class="comment text-justify">{{ $feedback->feedback }}</div>
@@ -631,7 +627,13 @@
 </section>
 @endsection
 @section('js')
-<script src="{{ asset("/") }}front/js/owl.carousel.min.js"></script>
+<script src="{{ asset('front/js/owl.carousel.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("img").lazyload();
+    });
+</script>
 <script>
     var owl = $('.owl-carousel');
     owl.owlCarousel({

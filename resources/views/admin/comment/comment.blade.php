@@ -55,7 +55,14 @@
                     <td>{{ $comment->comment }}</td>
                     <td>{{ $comment->rating }}</td>
                     <td>{{ $comment->reply }}</td>
-                    <td><a href="{{ route("admin.comment.edit", ["comment" => $comment->id ]) }}">Reply</a></td>
+                    <td>
+                      <a href="{{ route("admin.comment.edit", ["comment" => $comment->id ]) }}">Reply</a> <br>
+                      <form action="{{route("admin.comment.destroy",['comment' => $comment->id])}}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <button class="btn-circle btn-danger" type="submit" onclick="return confirm('Are your sure')"><span class="fa fa-trash"></span></button>
+                    </form>
+                    </td>
                 </tr>
                 @endforeach
           </tbody>

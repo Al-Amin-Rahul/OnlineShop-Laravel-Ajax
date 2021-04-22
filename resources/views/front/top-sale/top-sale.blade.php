@@ -173,6 +173,9 @@ HalalGhor - Top Sale
             </div>
             @endforeach
         </div>
+        <div class="pagination-wrap pt-5">
+            {{ $top_sales->links() }}
+        </div>
     </div>
 </section>
 @endsection

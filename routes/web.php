@@ -44,9 +44,6 @@ Route::namespace('Front')->group(function(){
     Route::get('order-confirmation', 'HomeController@showConfirmation')->name('order-confirmation');
     Route::post('track-order', 'HomeController@showOrder')->name('track-order');
 
-    Route::post('search/products', 'SearchController@searchProducts')->name('search/products');
-    // Route::get('productList/{key}', 'SearchController@Products')->name('productList');
-
     Route::post('comment/store', 'CommentController@store')->name('comment.store');
     Route::get('show-comment/{id}', 'CommentController@show')->name('show-comment');
 

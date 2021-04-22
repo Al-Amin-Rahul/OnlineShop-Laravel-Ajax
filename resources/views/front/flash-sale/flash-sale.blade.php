@@ -131,6 +131,9 @@ HalalGhor - Flash Sale
             </div>
             @endforeach
         </div>
+        <div class="pagination-wrap pt-5">
+            {{ $flash_sales->links() }}
+        </div>
     </div>
 </section>
 @endsection

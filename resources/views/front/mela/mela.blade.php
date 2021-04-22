@@ -134,6 +134,9 @@ HalalGhor - Mela
             </div>
             @endforeach
         </div>
+        <div class="pagination-wrap pt-5">
+            {{ $melar_products->links() }}
+        </div>
     </div>
 </section>
 @endsection

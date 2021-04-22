@@ -1,23 +1,29 @@
-$(function(){
+$( document ).ready(function(){
+    let flag    =   false;
     $(document).on("submit", "#addToCartForm", function(e){
-        let url = $(this).attr("action");
-        let method = $(this).attr("method");
-        let data = $(this).serialize();
+        if(!flag)
+        {
+            flag    =   true;
+            let url = $(this).attr("action");
+            let method = $(this).attr("method");
+            let data = $(this).serialize();
 
-        $.ajax({
-            url: url,
-            method: method,
-            data: data,
-            beforeSend: function()
-            {
-                $('#moonLoader').removeClass('d-none');
-            },
-            success: data => {
-                $('#moonLoader').addClass('d-none');
-                return getCartItems();
-            }
-        });
-        e.preventDefault();
+            $.ajax({
+                url: url,
+                method: method,
+                data: data,
+                beforeSend: function()
+                {
+                    $('#moonLoader').removeClass('d-none');
+                },
+                success: data => {
+                    $('#moonLoader').addClass('d-none');
+                    flag    =   false;
+                    return getCartItems();
+                }
+            });
+            e.preventDefault();
+        }
     });
 });
 

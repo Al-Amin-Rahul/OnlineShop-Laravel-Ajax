@@ -3,17 +3,15 @@
         <a href="javascript:void(0)" class="side-menu-closebtn" onclick="closeFooterMenu()">&times;</a>
             <div class="container">
                 <ul class="footer-menu-list">
-                    <div class="wrap pt-4">
-                        <li>Welcome To | Halal Ghor</li>
-                    </div>
+                    <li class="pt-4">Welcome To | Halal Ghor</li>
                     <hr class="bg-green"/>
-                        @foreach($categories as $category)
-                            <a href="{{route("product-category", ['slug'  =>  $category->slug])}}"><li><i class="fas fa-shopping-cart c-green"></i> {{$category->category_name}}</li></a>
-                        @endforeach
-                    <a href="{{route("all-categories")}}"><li><i class="fas fa-caret-square-right text-primary"></i> All Categories</li></a>
+                    @foreach($categories as $category)
+                        <li><a href="{{route("product-category", ['slug'  =>  $category->slug])}}"><i class="fas fa-shopping-cart c-green"></i> {{$category->category_name}}</a></li>
+                    @endforeach
+                    <li><a href="{{route("all-categories")}}"><i class="fas fa-caret-square-right text-primary"></i> All Categories</a></li>
                     <hr class="bg-green"/>
-                    <a href="{{ route("contact-us") }}"><li><i class="fas fa-question text-danger"></i> Help</li></a>
-                    <a href="{{ route("feedback") }}"><li><i class="fas fa-star text-warning"></i> Feedback</li></a>
+                    <li><a href="{{ route("contact-us") }}"><i class="fas fa-question text-danger"></i> Help</a></li>
+                    <li><a href="{{ route("feedback") }}"><i class="fas fa-star text-warning"></i> Feedback</a></li>
                 </ul>
             </div>
         </div>

@@ -132,6 +132,9 @@ HalalGhor - {{ $occational_offer_title->occational_offer_title }}
             </div>
             @endforeach
         </div>
+        <div class="pagination-wrap pt-5">
+            {{ $occational_offer_products->links() }}
+        </div>
     </div>
 </section>
 @endsection

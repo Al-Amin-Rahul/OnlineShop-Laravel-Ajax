@@ -7,9 +7,9 @@
                     <li class="menu-item"><a href="{{ route("about-us") }}" class="text-decoration-none">About Us</a> </li>
                     <li class="menu-item"><a href="{{ route("contact-us") }}" class="text-decoration-none">Contact Us</a></li>
                     <li class="menu-item badge badge-danger"><a href="{{ route("how-to-buy") }}" class="text-decoration-none">How To Buy</a></li>
-                    <li class="menu-item"><a href="https://www.facebook.com/halalghor" target="_blank" class="text-decoration-none">Facebook</a></li>
-                    <li class="menu-item"><a href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/" target="_blank" class="text-decoration-none">Youtube</a></li>
-                    <li class="menu-item badge badge-primary"><a href="https://www.blog.halalghor.com" target="_blank" class="text-decoration-none">Blog</a></li>
+                    <li class="menu-item"><a href="https://www.facebook.com/halalghor" target="_blank" rel="noopener" class="text-decoration-none">Facebook</a></li>
+                    <li class="menu-item"><a href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/" target="_blank" rel="noopener" class="text-decoration-none">Youtube</a></li>
+                    <li class="menu-item badge badge-primary"><a href="https://www.blog.halalghor.com" target="_blank" rel="noopener" class="text-decoration-none">Blog</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 text-md-center text-lg-left text-center">
@@ -46,11 +46,11 @@
                 <div class="heading-2 pb-2"><img class="w-100 img-thumbnail" src="{{ asset("/") }}front/images/weblogo.png" alt="logo"/></div>
                 <div class="copyright text-center c-green">Copyright © {{ date("Y") }}, www.halalghor.com all rights reserved</div>
                 <div class="soc-icons text-center pt-2 pb-xs-3">
-                    <a href="https://www.facebook.com/halalghor" target="_blank"><i class="fab fa-facebook pr-3 text-wheat"></i></a>
-                    <a href="https://www.google.com" target="_blank"><i class="fab fa-google pr-3 text-wheat"></i></a>
-                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter pr-3 text-wheat"></i></a>
-                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin pr-3 text-wheat"></i></a>
-                    <a href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/" target="_blank"><i class="fab fa-youtube text-wheat"></i></a>
+                    <a aria-label="Link" href="https://www.facebook.com/halalghor" target="_blank" rel="noopener"><i class="fab fa-facebook pr-3 text-wheat"></i></a>
+                    <a aria-label="Link" href="https://www.google.com" target="_blank" rel="noopener"><i class="fab fa-google pr-3 text-wheat"></i></a>
+                    <a aria-label="Link" href="https://www.twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter pr-3 text-wheat"></i></a>
+                    <a aria-label="Link" href="https://www.linkedin.com" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-3 text-wheat"></i></a>
+                    <a aria-label="Link" href="https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA/" target="_blank" rel="noopener"><i class="fab fa-youtube text-wheat"></i></a>
                 </div>
             </div>
         </div>
@@ -59,9 +59,9 @@
             <div class="col-lg-8">
                 <form action="" method="">
                     <div class="input-group newslater">
-                        <input type="email" name="email" class="form-control border-green" placeholder="Enter Your Email To SUbscribe Newslater" required/>
+                        <input type="email" name="email" class="form-control border-green" aria-labelledby="subsbutton" placeholder="Enter Your Email To SUbscribe Newslater" required/>
                         <div class="input-group-append">
-                            <input type="submit" value="SUBSCRIBE" class="btn bg-green text-dark"/>
+                            <input type="submit" value="SUBSCRIBE" class="btn bg-green text-dark" id="subsbutton"/>
                         </div>
                     </div>
                     <div class="terms text-center c-wheat form-group pt-3">
@@ -79,7 +79,7 @@
                         <p class="c-green">Payments We Accept</p>
                     </li>
                     <li class="px-3"><img class="img-thumbnail" src="{{ asset("/") }}front/images/bkash.png" alt="bkash" style="width:50px"></li>
-                    <li><img class="img-thumbnail" src="{{ asset("/") }}front/images/nagad.png" alt="nagad" style="width:50px;height: 32px;"></li>
+                    <li><img class="img-thumbnail" src="{{ asset("/") }}front/images/rsz_nagad.png" alt="nagad" style="width:50px;height: 32px;"></li>
                     <li class="pl-3"><img class="" src="{{ asset("/") }}front/images/rocket.png" alt="nagad" style="width:50px;height: 32px;"></li>
                 </ul>
             </div>
