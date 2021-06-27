@@ -16,12 +16,12 @@
         <div class="row">
             <div class="col-lg-12">
                     <div class="table-responsive">
-                        <table class="table bg-white shadow rounded text-center" width="100%">
+                        <table class="table bg-white shadow rounded" width="100%">
                             @php($sum=0)
                             @foreach($cartItems as $cartItem)
                             <tbody class="shadow">
-                                <td>{{ $cartItem->name }}</td>
-                                <td><img src="{{asset( $cartItem->options->image )}}" width="50" alt=""></td>
+                                <td class="pr-0">{{ $cartItem->name }}</td>
+                                <td class="pl-0"><img src="{{asset( $cartItem->options->image )}}" width="50" alt=""></td>
                                 <td class="px-0">
                                     <form action="{{ route("cart-update") }}" method="POST" id="updateCart">
                                         @csrf
@@ -30,8 +30,7 @@
                                         <input type="submit" value="Update" name="cart_update" class="btn btn-dark small p-1">
                                     </form>
                                 </td>
-                                <td>{{ $cartItem->price }}</td>
-                                <td>{{ $total   =   $cartItem->qty * $cartItem->price }}</td>
+                                <td class="px-0">{{ $cartItem->price }} <i class="fas fa-times"></i> {{ $cartItem->qty }} = {{ $total   =   $cartItem->qty * $cartItem->price }}</td>
                                 @if(Route::currentRouteName() === 'checkout.index' || Route::currentRouteName() === 'buy-now')
                                 @else
                                     <td>

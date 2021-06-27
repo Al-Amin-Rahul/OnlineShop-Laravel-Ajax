@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8" />
+<head><meta charset="windows-1252">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#89C74A">
     <title>@yield('title')</title>
@@ -28,45 +28,21 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '3291429920952482');
+    fbq('init', '464004397564765');
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=3291429920952482&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=464004397564765&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Facebook Pixel Code -->
-    
-    <script type="application/ld+json">
-     { "@context": "https://schema.org",
-     "@type": "Organization",
-     "name": "Halal Ghor",
-     "legalName" : "halalghor.com",
-     "url": "https://halalghor.com",
-     "logo": "https://halalghor.com/front/images/weblogo.png",
-     "foundingDate": "2018",
-     "founders": [
-     {
-     "@type": "Person",
-     "name": "Sohel Rana"
-     }],
-     "address": {
-     "@type": "PostalAddress",
-     "streetAddress": "39/3 Shenpara, Parbata, Mirpur-10",
-     "addressLocality": "Bangladesh",
-     "addressRegion": "Dhaka",
-     "postalCode": "1216",
-     "addressCountry": "Bangladesh"
-     },
-     "contactPoint": {
-     "@type": "ContactPoint",
-     "contactType": "customer support",
-     "telephone": "01947-325581",
-     "email": "halalghor@gmail.com"
-     },
-     "sameAs": [ 
-     "https://www.facebook.com/halalghor",
-     "https://www.youtube.com/channel/UCtnniAx6ZnH-FPSvR3H3FlA"
-     ]}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8W6T7N53BY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8W6T7N53BY');
 </script>
 </head>
 
@@ -142,7 +118,6 @@
 <script src="{{ asset("/") }}admin/vendor/jquery/jquery.min.js"></script>
 <script src="{{ asset("/") }}front/js/bootstrap.js"></script>
 <script src="{{ asset("/") }}front/js/cart.js"></script>
-<script src="{{ asset("/") }}front/js/search.js"></script>
 @yield('js')
 @livewireScripts
 <!-- cart script  -->

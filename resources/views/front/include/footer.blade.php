@@ -83,8 +83,8 @@
                     <li class="pl-3"><img class="" src="{{ asset("/") }}front/images/rocket.png" alt="nagad" style="width:50px;height: 32px;"></li>
                 </ul>
             </div>
-            <div class="col-lg-4 text-md-center text-lg-right text-center">
-                <span class="c-wheat"><i class="fas fa-tools"></i> Developed By <a class="c-green" href="{{ route("developer-info") }}" target="_blank">Team</a></span>
+            <div class="col-lg-4 text-md-center text-lg-right text-center pb-lg-0 pb-3">
+                <span class="c-wheat"><i class="fas fa-tools"></i> Developed By <a class="c-green font-weight-bold" href="https://www.facebook.com/returntrueit/" target="_blank"><i class="fas fa-hand-point-right text-warning"></i> <u> Return True;</u></a></span>
             </div>
         </div>
     </div>
